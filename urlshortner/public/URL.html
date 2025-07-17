@@ -9,76 +9,85 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <ul>
-            <li>
-                <select name="name" id="first">
-                    <option value="one">one</option>
-                    <option value="one">two</option>
-                    <option value="one">three</option>
-                    <option value="one">four</option>
-                </select>
-            </li>
-            <li>
-                <select name="name" id="second">
-                    <option value="two">one</option>
-                    <option value="two">two</option>
-                    <option value="two">three</option>
-                    <option value="two">four</option>
-                </select>
-            </li>
-            <li>
-                <select name="name" id="third">
-                    <option value="three">one</option>
-                    <option value="three">two</option>
-                    <option value="three">three</option>
-                    <option value="three">four</option>
-                </select>
-            </li>
-            <li>
-                <select name="name" id="fourth">
-                    <option value="four">one</option>
-                    <option value="four">two</option>
-                    <option value="four">three</option>
-                    <option value="four">four</option>
-                </select>
-            </li>
-            <li>
-                <select name="name" id="fifth">
-                    <option value="five">one</option>
-                    <option value="five">two</option>
-                    <option value="five">three</option>
-                    <option value="five">four</option>
-                </select>
-            </li>
-            <li>
-                <select name="name" id="second">
-                    <option value="two">one</option>
-                    <option value="two">two</option>
-                    <option value="two">three</option>
-                    <option value="two">four</option>
-                </select>
-            </li>
-        </ul>
-    </div>
-    <div class="form">
-        <div class="container">
-            <h1>URL SHORTNER</h1>
-            <form id="shorten-form">
-                <div>
-                    <label for="url">Enter Url:</label>
-                    <input type="text" id="url" name="url" placeholder="Enter URL" required>
-                </div>
-                <div>
-                    <label for="shortCode">Enter shortcode:</label>
-                    <input type="text" id="shortCode" name="shortCode" placeholder="Enter Shortened URL" required>
-                </div>
-                <button type="submit">shorten</button>
-            </form>
-            <h2>Shortened Url</h2>
-            <ul id="shortened-urls"></ul>
+    <header>
+
+        <div class="navbar">
+            <ul>
+                <li>
+                    <select name="name" id="first">
+                        <option value="one">one</option>
+                        <option value="one">two</option>
+                        <option value="one">three</option>
+                        <option value="one">four</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="name" id="second">
+                        <option value="two">one</option>
+                        <option value="two">two</option>
+                        <option value="two">three</option>
+                        <option value="two">four</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="name" id="third">
+                        <option value="three">one</option>
+                        <option value="three">two</option>
+                        <option value="three">three</option>
+                        <option value="three">four</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="name" id="fourth">
+                        <option value="four">one</option>
+                        <option value="four">two</option>
+                        <option value="four">three</option>
+                        <option value="four">four</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="name" id="fifth">
+                        <option value="five">one</option>
+                        <option value="five">two</option>
+                        <option value="five">three</option>
+                        <option value="five">four</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="name" id="second">
+                        <option value="two">one</option>
+                        <option value="two">two</option>
+                        <option value="two">three</option>
+                        <option value="two">four</option>
+                    </select>
+                </li>
+            </ul>
         </div>
-    </div>
+    </header>
+    <main>
+
+        <div class="form">
+            <div class="container">
+                <h1>URL SHORTNER</h1>
+                <form id="shorten-form">
+                    <div>
+                        <label for="url">Enter Url:</label>
+                        <input type="text" id="url" name="url" placeholder="Enter URL" required>
+                    </div>
+                    <div>
+                        <label for="shortCode">Enter shortcode:</label>
+                        <input type="text" id="shortCode" name="shortCode" placeholder="Enter Shortened URL" required>
+                    </div>
+                    <button type="submit">shorten</button>
+                </form>
+                <h2>Shortened Url</h2>
+                <ul id="shortened-urls"></ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; mohit kumawat
+    </footer>
     <script src="./js/script.js"></script>
 </body>
 
