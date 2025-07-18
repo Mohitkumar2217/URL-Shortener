@@ -79,3 +79,18 @@ footer {
     background-color: aqua;
     text-align: end;
 }
+
+.first {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.first:hover .first_one {
+    display: flex;
+    flex-direction: column;
+}
+ 
+.first_one li {
+    display:none;
+}
