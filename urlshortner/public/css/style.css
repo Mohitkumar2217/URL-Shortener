@@ -80,17 +80,16 @@ footer {
     text-align: end;
 }
 
-.first {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+.first_one li {
+    display: none;
 }
 
-.first:hover .first_one {
+.first{
+    cursor: pointer;
+    text-decoration: none;
+}
+.first:hover .first_one li{
     display: flex;
     flex-direction: column;
-}
- 
-.first_one li {
-    display:none;
+    width: 4dvw;
 }
