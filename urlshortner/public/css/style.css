@@ -80,16 +80,36 @@ footer {
     text-align: end;
 }
 
-.first_one li {
+.first_one {
     display: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+    background-color: blanchedalmond;
+    width: 18dvw;
 }
 
 .first{
+    display: flex;
+    justify-content: center;
     cursor: pointer;
-    text-decoration: none;
 }
-.first:hover .first_one li{
+.first:hover .first_one {
+    position: absolute;
+    top: 10%;
     display: flex;
     flex-direction: column;
-    width: 4dvw;
+    /* border: 2px solid black; */
+}
+
+.first:hover {
+    font-size: 120%;
+}
+
+.navbar {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
 }
