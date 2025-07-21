@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require("path");
+const { log } = require('console');
+
+const { readFile } = require('fs/promises');
+
 
 const app = express();
-
 
 
 app.use(express.json()); // for parsing JSON bodies
@@ -11,6 +14,8 @@ app.use(express.json()); // for parsing JSON bodies
 
 const staticPath = path.join(__dirname, 'public');
 app.use(express.static(staticPath));
+
+
 
 
 // get method
