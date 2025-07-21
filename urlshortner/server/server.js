@@ -6,6 +6,8 @@ const path = require('path');
 const app = require('../app.js');
 
 const server = http.createServer(async (req, res) => {
+    console.log(req.url);
+
     if(req.method === 'GET') {
         if(req.url === '/') {
             try {
