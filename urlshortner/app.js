@@ -4,10 +4,6 @@ const path = require("path");
 const app = express();
 
 
-// static use
-// app.use(express.static("public"));
-  
-
 
 app.use(express.json()); // for parsing JSON bodies
 
