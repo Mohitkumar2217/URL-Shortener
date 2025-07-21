@@ -19,7 +19,7 @@ const serverFile = async (res, filePath, contentType) => {
         res.end(data);
     }
     catch (error) {
-        res.writeHead(404, { 'Contenet-type': 'text/plain' });
+        res.writeHead(400, { 'Contenet-type': 'text/plain' });
         res.end('404 page not found');
     }
 }
@@ -36,6 +36,10 @@ const loadLinks = async () => {
             return {};
         }
     }
+}
+
+const saveLinks = () => {
+    
 }
 const server = http.createServer(async (req, res) => {
     console.log(req.url);
@@ -62,17 +66,24 @@ const server = http.createServer(async (req, res) => {
         req.on("data", (chunk) => {
             body += chunk;
         });
-        req.on("end", ()=> {
+        req.on("end", async ()=> {
             console.log(body);
             const {url, shortCode} = json.parse(body);
             console.log(url, shortCode);
 
             if(!url) {
-                res.writeHead(404, {"Content-type" : "text/plain" });
+                res.writeHead(400, {"Content-type" : "text/plain" });
                 return res.end("URL is required");
             }
 
             const finalShortCode = shortCode || crypto.randomBytes(4).toString("hex");
+
+            if(links[finalShortCode]) {
+                res.writeHead(400, {"Content-type" : "text/plain" });
+                return res.end("this shorturl already taken please choose another one");
+            }
+            links[finalShortCode] = url;
+            await saveLinks(links);
         });
     }
 });
