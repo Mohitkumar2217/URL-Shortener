@@ -62,10 +62,8 @@ const server = http.createServer(async (req, res) => {
     if(req.method === 'POST' && req.url === "/shorten") {
 
         const links = await loadLinks();
-        const body = "";
-        req.on("data", (chunk) => {
-            body += chunk;
-        });
+        let body = "";
+        req.on("data", (chunk) => body += chunk);
         req.on("end", async ()=> {
             console.log(body);
             const {url, shortCode} = json.parse(body);

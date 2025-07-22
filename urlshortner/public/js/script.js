@@ -15,8 +15,15 @@ shorten.addEventListener("submit", async (event) => {
             headers: {"Content-tyoe":"application/json"},
             body: {url, shortCode}
         });
+        if(response.ok) {
+            alert("form submitted successfully");
+        }
+        else {
+            const errorMessage = await response.text();
+            alert(errorMessage);
+        }
     } catch (error) {
-        
+        console.log(error);        
     }
 });
 
