@@ -1,40 +1,45 @@
-const shorten = document.getElementById("shorten-form");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('shorten-form');
+  const resultDiv = document.getElementById('result');
 
-shorten.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    const formData = new FormData(event.target);
-    
-    const url = formData.get("url");
-    const shortCode = formData.get("shortCode");
-    console.log(url,shortCode);
+    const url = document.getElementById('url').value.trim();
+    const shortCode = document.getElementById('shortCode').value.trim();
+
+    if (!url) {
+      resultDiv.textContent = 'Please enter a valid URL.';
+      resultDiv.style.color = 'red';
+      return;
+    }
 
     try {
-        const response = await fetch("/shorten", {
-            method: "POST",
-            headers: {"Content-tyoe":"application/json"},
-            body: {url, shortCode}
-        });
-        if(response.ok) {
-            alert("form submitted successfully");
-        }
-        else {
-            const errorMessage = await response.text();
-            alert(errorMessage);
-        }
-    } catch (error) {
-        console.log(error);        
+      const response = await fetch('/shorten', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url, shortCode })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const fullShortUrl = `${window.location.origin}/${data.shortCode}`;
+        resultDiv.innerHTML = `
+          <p>Shortened URL:</p>
+          <a href="${fullShortUrl}" target="_blank">${fullShortUrl}</a>
+        `;
+        resultDiv.style.color = 'green';
+      } else {
+        resultDiv.textContent = data || 'Something went wrong.';
+        resultDiv.style.color = 'red';
+      }
+    } catch (err) {
+      resultDiv.textContent = 'Error connecting to server.';
+      resultDiv.style.color = 'red';
+      console.error(err);
     }
+  });
 });
-
-// const first = document.querySelectorAll(".first");
-// first.addEventListener("onclick", (event) => {
-//     event.preventDefault();
-// });
-
-// const submitBtn = document.querySelector('.submitBtn');
-
-// submitBtn.addEventListener("onclick", (event) => {
-//     event.preventDefault();
-
-// })
