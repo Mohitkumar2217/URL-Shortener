@@ -7,7 +7,6 @@ const http = require('http');
 const path = require("path");
 
 const { readFile } = require('fs/promises');
-const { json } = require('stream/consumers');
 const { writeFile } = require('fs');
 
 const DATA_FILE = path.join('data' , "links.json");
@@ -19,7 +18,7 @@ const serverFile = async (res, filePath, contentType) => {
         res.end(data);
     }
     catch (error) {
-        res.writeHead(400, { 'Contenet-type': 'text/plain' });
+        res.writeHead(400, { 'Content-type': 'text/plain' });
         res.end('404 page not found');
     }
 }
@@ -28,7 +27,7 @@ const serverFile = async (res, filePath, contentType) => {
 const loadLinks = async () => {
     try {
         const data = await readFile(DATA_FILE, "utf-8");
-        return json.parse(data);
+        return JSON.parse(data);
     }
     catch(error) {
         if(error.code === "ENOENT") {
@@ -39,8 +38,12 @@ const loadLinks = async () => {
 }
 
 const saveLinks = async (links) => {
-    await writeFile(DATA_FILE, JSON.stringify(links));
-}
+    try {
+        await writeFile(DATA_FILE, JSON.stringify(links));
+    } catch (error) {
+        console.error("Failed to save links:", error);
+    }
+};
 const server = http.createServer(async (req, res) => {
     console.log(req.url);
     if (req.method === 'GET') {
@@ -54,8 +57,7 @@ const server = http.createServer(async (req, res) => {
         else if (req.url === '/style.css') {
             return serverFile(
                 res,
-                path.join('public', './css/style.css'),
-                'text/css'
+                path.join('public', 'css', 'style.css')
             );
         }
     }
