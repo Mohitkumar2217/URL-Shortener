@@ -78,20 +78,12 @@
         <div class="container">
             <h1>URL SHORTNER</h1>
             <form id="shorten-form">
-                <div>
-                    <label for="url">Enter Url:</label>
-                    <input type="text" id="url" name="url" placeholder="Enter URL" required>
-                </div>
-                <div>
-                    <label for="shortCode">Enter shortcode:</label>
-                    <input type="text" id="shortCode" name="shortCode" placeholder="Enter Shortened URL" required>
-                </div>
-                <button type="submit" class="submitBtn">shorten</button>
+                <input type="text" id="url" placeholder="Enter URL" required />
+                <input type="text" id="shortCode" placeholder="Custom short code (optional)" />
+                <button type="submit">Shorten</button>
             </form>
-            <h2>Shortened Url</h2>
-            <ul id="shortened-urls"></ul>
+            <div id="result"></div>
         </div>
-
     </main>
     <footer>
         &copy; mohit kumawat
