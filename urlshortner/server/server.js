@@ -38,8 +38,8 @@ const loadLinks = async () => {
     }
 }
 
-const saveLinks = () => {
-    
+const saveLinks = async (links) => {
+    await writeFile(DATA_FILE, JSON.stringify(links));
 }
 const server = http.createServer(async (req, res) => {
     console.log(req.url);
@@ -84,6 +84,9 @@ const server = http.createServer(async (req, res) => {
             }
             links[finalShortCode] = url;
             await saveLinks(links);
+
+            res.writeHead(200, {"Content-type" : "application/json" });
+            res.end(JSON.stringify({success: true, shortCode: finalShortCode}));
         });
     }
 });

@@ -1,13 +1,23 @@
 const shorten = document.getElementById("shorten-form");
 
-shorten.addEventListener("submit", (event) => {
+shorten.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     
     const url = formData.get("url");
-    const shortcode = formData.get("shortCode");
-    console.log(url,shortcode);
+    const shortCode = formData.get("shortCode");
+    console.log(url,shortCode);
+
+    try {
+        const response = await fetch("/shorten", {
+            method: "POST",
+            headers: {"Content-tyoe":"application/json"},
+            body: {url, shortCode}
+        });
+    } catch (error) {
+        
+    }
 });
 
 // const first = document.querySelectorAll(".first");
