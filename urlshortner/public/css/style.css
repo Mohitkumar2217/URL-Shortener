@@ -113,3 +113,9 @@ a {
     justify-content: space-around;
     padding: 2%;
 }
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
