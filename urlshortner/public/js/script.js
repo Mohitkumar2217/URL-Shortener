@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         resultDiv.style.color = 'green';
       } else {
-        resultDiv.textContent = data || 'Something went wrong.';
+        resultDiv.textContent = data || 'Already used';
+        alert('This short name already taken!');
         resultDiv.style.color = 'red';
       }
     } catch (err) {
