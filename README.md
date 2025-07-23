@@ -15,7 +15,9 @@ A simple and lightweight URL shortener built with Node.js and Express. It allows
 ---
 
 ## 📁 Project Structure
-URL-Shortener/ ├── public/               # Static frontend files 
+```
+URL-Shortener/
+├── public/               # Static frontend files 
 │   ├── URL.html       # Main form page 
 │   ├── css/ 
 │   │   └── style.css 
@@ -27,18 +29,12 @@ URL-Shortener/ ├── public/               # Static frontend files
 ├── utils/                # Utility modules 
 │   ├── fileHandler.js   # Read/write links.json 
 │   └── validator.js      # URL validation 
-├── data/ │   └── links.json        # Persistent storage 
+├── data/ 
+│   └── links.json        # Persistent storage 
 ├── app.js                # Express app setup 
 ├── server.js             # Entry point 
 ├── package.json 
 └── README.md
-
+```
 
 ---
-
-## 🛠️ Setup Instructions
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Mohitkumar2217/URL-Shortener.git
-cd URL-Shortener
