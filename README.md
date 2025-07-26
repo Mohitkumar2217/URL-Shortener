@@ -51,10 +51,3 @@ URL-Shortener/
 - Basic error handling and validation
 - Responsive design
 
-## 🚀 Getting Started
-
-To run locally:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mohitkumar2217/URL-Shortener.git
