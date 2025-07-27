@@ -50,4 +50,6 @@ URL-Shortener/
 - Copy-to-clipboard functionality
 - Basic error handling and validation
 - Responsive design
-
+- output an download link
+- output in anccur tage
+- all input required
