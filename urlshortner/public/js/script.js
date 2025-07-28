@@ -1,3 +1,6 @@
+const myUrl = document.getElementById('url');
+const myshortCode = document.getElementById('shortCode');
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('shorten-form');
   const resultDiv = document.getElementById('result');
@@ -5,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const url = document.getElementById('url').value.trim();
-    const shortCode = document.getElementById('shortCode').value.trim();
+    const url = myUrl.value.trim();
+    const shortCode = myshortCode.value.trim();
 
     if (!url) {
       resultDiv.textContent = 'Please enter a valid URL.';
