@@ -55,3 +55,5 @@ URL-Shortener/
 - output an download link
 - output in anccur tage
 - all input required
+## note
+if you can help me to connect db please help with pull request
