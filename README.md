@@ -13,8 +13,8 @@ A simple, modular URL shortener built with HTML, CSS, and JavaScript — designe
 | Layer | Tools Used | 
 | Frontend | HTML, CSS, JavaScript | 
 | Backend (WIP) | Node.js, Express.js | 
-| Database | MongoDB (via Atlas) | 
-| Deployment | Render / Vercel (planned) | 
+| Database | MongoDB | 
+| Deployment | Render | 
 ```
 
 
