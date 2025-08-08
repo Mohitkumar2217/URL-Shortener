@@ -3,8 +3,6 @@ const {handleLoadLink} = require("../controllers/shorturl");
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-    req.handleLoadLink
-})
+router.post('/', handleLoadLink);
 
 module.exports = router;
