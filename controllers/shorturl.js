@@ -11,7 +11,7 @@ async function handleLoadLink(req, res) {
             redirectId: body.url,
             visitHistory: [],
         })
-        return res.json({ id: shortID });
+        return res.status(201).json({ id: shortID });
     }
     catch(error) {
         return res.status(500).json({ msg: `error: ${error}` })
