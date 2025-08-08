@@ -31,6 +31,7 @@ npm start
 
 
 🛠️ Project Structure (planned)
+```
 URL-Shortener/
 ├── public/           # Frontend files
 │   ├── index.html
@@ -43,8 +44,7 @@ URL-Shortener/
 ├── .env              # Environment variables
 ├── .gitignore
 └── README.md
-
-
+```
 
 📌 To Do
 - [x] Build front-end interface
