@@ -1,7 +1,8 @@
-.env
-
+# Dependency folder
 node_modules/
 
-# package
+# Environment variables
+.env
 
+# Lock file (optional — only if you don’t want to commit it)
 package-lock.json
