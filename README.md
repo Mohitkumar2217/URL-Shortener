@@ -9,12 +9,13 @@ A simple, modular URL shortener built with HTML, CSS, and JavaScript — designe
 - 🔐 Environment-based configuration using .env
 
 🧰 Tech Stack
+```
 | Layer | Tools Used | 
 | Frontend | HTML, CSS, JavaScript | 
 | Backend (WIP) | Node.js, Express.js | 
 | Database | MongoDB (via Atlas) | 
 | Deployment | Render / Vercel (planned) | 
-
+```
 
 
 📦 Installation
