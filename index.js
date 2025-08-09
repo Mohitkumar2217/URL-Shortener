@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8001;
 
 dotenv.config();
 
-connectToMongoDB(process.env.MONGO_URI).then(() => {
+connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/urlshortener").then(() => {
     console.log("MongoDB is connected");
 });
 
