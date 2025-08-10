@@ -8,12 +8,10 @@
   </head>
 
   <body>
-
+    <h1>URL Shortener</h1>
     <% if (locals.id) { %>
       <p>URL Generate: http://localhost:8001/url/<%= id %></p>
     <% } %>
-
-    <h1>URL Shortener</h1>
     <form method="POST" action="/url">
       <label for="Original_URL">Enter Your Original URL</label>
       <input
