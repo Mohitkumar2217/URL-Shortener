@@ -6,16 +6,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  
+
   <body>
     <h1>URL  Shortener</h1>
-    <% urls.forEach(url=> { %>
+    <form action="">
+      <label for="Original_URL">Enter Your Original URL</label>
+      <input type="text" id="Original_URL" placeholder="http://example.com">
+    </form>
+    <!-- <% urls.forEach(url=> { %>
     <pre>
         <li><b>ShortId:</b><%= url.shortId %> 
             <b>ShortUrl:</b><%= url.redirectId %> 
             <b>TotalVisits:</b><%= url.visitHistory.length %> 
         </li>
-    </pre>
-    <% }) %>
+      </pre> 
+      <% }) %> -->
   </body>
 </html>
