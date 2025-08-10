@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
 const staticRouter = require("./routes/static");
-const URL = require('./models/url');
 const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const { connectToMongoDB } = require("./connect");
