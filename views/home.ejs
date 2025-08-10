@@ -8,6 +8,11 @@
   </head>
 
   <body>
+
+    <% if (locals.id) { %>
+      <p>URL Generate: http://localhost:8001/url/<%= id %></p>
+    <% } %>
+
     <h1>URL Shortener</h1>
     <form method="POST" action="/url">
       <label for="Original_URL">Enter Your Original URL</label>
@@ -18,14 +23,7 @@
         placeholder="http://example.com"
       />
       <button type="submit">Generate</button>
+
     </form>
-    <!-- <% urls.forEach(url=> { %>
-    <pre>
-        <li><b>ShortId:</b><%= url.shortId %> 
-            <b>ShortUrl:</b><%= url.redirectId %> 
-            <b>TotalVisits:</b><%= url.visitHistory.length %> 
-        </li>
-      </pre> 
-      <% }) %> -->
   </body>
 </html>

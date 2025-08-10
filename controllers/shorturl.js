@@ -10,11 +10,9 @@ async function handleLoadLink(req, res) {
         redirectId: body.url,
         visitHistory: [],
     })
-    return res.status(201).json({ id: shortID });
-    // }
-    // catch(error) {
-    //     return res.status(500).json({ msg: `error: ${error}` })
-    // }
+    return res.status(201).render("home", { 
+        id: shortID, 
+    });
 }
 
 module.exports = {
