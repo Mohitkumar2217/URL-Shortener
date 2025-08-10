@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <h1>URL  Shortener</h1>
-    <form action="">
+    <h1>URL Shortener</h1>
+    <form method="POST" action="/url">
       <label for="Original_URL">Enter Your Original URL</label>
-      <input type="text" id="Original_URL" placeholder="http://example.com">
+      <input
+        type="text"
+        name="url"
+        id="Original_URL"
+        placeholder="http://example.com"
+      />
+      <button type="submit">Generate</button>
     </form>
     <!-- <% urls.forEach(url=> { %>
     <pre>
