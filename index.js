@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const staticRouter = require("./routes/static");
 const URL = require('./models/url');
 const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
@@ -17,16 +18,11 @@ connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/urlshortene
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
-app.get("/test", async (req, res) => {
-    const allUrls = await URL.find({});
-    res.render("home" , {
-        urls: allUrls,
-    });
-})
 
 app.use(express.json());
 app.use("/url", urlPostRoute);
 app.use("/url", urlGetRoute);
+app.use("/", staticRouter);
 
 
 app.listen(PORT, () => {
