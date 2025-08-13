@@ -8,4 +8,8 @@ router.get("/test", async (req, res) => {
         urls: allUrls,
     });
 });
+
+router.get("/signup", async (req, res) => {
+    return res.render("signup");
+})
 module.exports = router;
