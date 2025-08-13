@@ -1,6 +1,7 @@
+### in prograss
 ### 🔗 URL Shortener
 ---
-A simple, modular URL shortener built with HTML, CSS, and JavaScript — designed to be extended with a backend using Node.js, Express, and MongoDB. This project is a work in progress and aims to provide a clean UI and robust API for shortening and managing links.
+A simple and modular URL shortener built with HTML, CSS, and JavaScript — designed to be extended with a backend using Node.js, Express, and MongoDB. This project is a work in progress and aims to provide a clean UI and robust API for shortening and managing links.
 
 🚀 Features
 - ✂️ Shortens long URLs into compact, shareable links
