@@ -11,19 +11,19 @@ async function handleUserSignUp(req, res) {
     if(password != confirmpass) return res.render("signup", {
         error: "fill password and confirm password same",
     })
-    return res.render("home");
+    return res.redirect("/shortner");
 }
 
 async function handleUserLogin(req, res) {
     const { email, password } = req.body;
-    const user = await Logger.findOne({
+    const user = await User.findOne({
         email,
         password,
     });
     if(!user) return res.render("login", {
         error: "Invalid Username or Passwaord"
     })
-    return res.render("home");
+    return res.redirect("/");
 }
 module.exports = {
     handleUserSignUp,
