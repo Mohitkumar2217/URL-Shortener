@@ -9,6 +9,7 @@ async function handleLoadLink(req, res) {
         shortId: shortID,
         redirectId: body.url,
         visitHistory: [],
+        createdBy: req.user._id,
     })
     return res.status(201).render("home", { 
         id: shortID, 

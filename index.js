@@ -9,15 +9,14 @@ const app = express();
 const PORT = process.env.PORT || 8001;
 dotenv.config();
 // middle ware
-const {restrictToLoggedInUserOnly} = require("./middleware/auth");
+const {restrictToLoggedInUserOnly, checkAuth} = require("./middleware/auth");
 // routes
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
-
-// process.env.MONGO_URI || 
-connectToMongoDB("mongodb://127.0.0.1:27017/urlshortener").then(() => {
+ 
+connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/Shortener").then(() => {
     console.log("MongoDB is connected");
 });
 
@@ -33,7 +32,7 @@ app.use(cookieParser());
 app.use("/url",restrictToLoggedInUserOnly, urlPostRoute);
 app.use("/url",restrictToLoggedInUserOnly, urlGetRoute);
 app.use("/user", userRoute);
-app.use("/", staticRouter);
+app.use("/", checkAuth, staticRouter);
 
 
 app.listen(PORT, () => {
