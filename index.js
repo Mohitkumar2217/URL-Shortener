@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8001;
 dotenv.config();
 // middle ware
-const {restrictToLoggedInUserOnly, checkAuth} = require("./middleware/auth");
+const {restrictToLoggedInUserOnly, checkAuth} = require("./middlewares/auth");
 // routes
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");

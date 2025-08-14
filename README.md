@@ -34,6 +34,23 @@ A sleek and minimal URL shortening service built with Node.js, Express, MongoDB,
 ```
 URL-Shortener/
 ├── controllers/           # backend fi
+│   ├── analytic.js
+│   ├── redirect.js
+│   ├── shorturl.js
+│   └── user.js
+├── middlewares/           # backend fi
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── controllers/           # backend fi
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── controllers/           # backend fi
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── controllers/           # backend fi
 │   ├── index.html
 │   ├── style.css
 │   └── script.js
