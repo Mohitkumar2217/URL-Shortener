@@ -4,8 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SignUp</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
   </head>
   <body>
     <h1>SignUp</h1>
+    <form action="/user" method="post">
+      <label for="">Full Name</label>
+      <input type="text" required name="name" id="fullName">
+      <label for="">Email</label>
+      <input type="text" required name="email" id="fullEmail">
+      <label for="">Password</label>
+      <input type="text" required name="password" id="fullPassword">
+
+      <button type="submit">SignUp</button>
+    </form>
   </body>
 </html>
