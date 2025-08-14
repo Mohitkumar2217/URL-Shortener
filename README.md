@@ -39,27 +39,32 @@ URL-Shortener/
 │   ├── shorturl.js
 │   └── user.js
 ├── middlewares/           # backend fi
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── controllers/           # backend fi
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── controllers/           # backend fi
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── controllers/           # backend fi
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── server/           # Backend logic
-│   ├── routes/
-│   ├── models/
-│   └── app.js
+│   └── auth.js
+├── models/           # backend fi
+│   ├── url.js
+│   └── user.js
+├── public/           # backend fi
+│   ├── css/
+|   |   └── style.css
+│   ├── jss/
+│   |   └── script.js
+│   └── URL.html
+├── routes/           # backend fi
+│   ├── geturl.js
+│   ├── posturl.js
+│   ├── static.js
+│   └── user.js
+├── services/           # Backend logic
+│   └── auth.js
+├── views/           # Backend logic
+|   ├── home.ejs
+|   ├── login.ejs
+│   └── signup.js
 ├── .env              # Environment variables
 ├── .gitignore
+├── connect.js
+├── index.js
+├── package.json
 └── README.md
 ```
 
@@ -98,8 +103,8 @@ URL-Shortener/
 ## 📌 To-Do
 
 - [x] Basic frontend UI
-- [ ] Backend API for shortening
-- [ ] MongoDB integration
+- [x] Backend API for shortening
+- [x] MongoDB integration
 - [ ] QR code generation
 - [ ] Link expiry and analytics
 - [ ] Admin dashboard
