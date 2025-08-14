@@ -1,11 +1,15 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
+
+
 const app = express();
 const PORT = process.env.PORT || 8001;
 dotenv.config();
-
+// middle ware
+const {restrictToLoggedInUserOnly} = require("./middleware/auth");
 // routes
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");
@@ -22,12 +26,13 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
+app.use(cookieParser());
 
 
-app.use("/url", urlPostRoute);
-app.use("/url", urlGetRoute);
-app.use("/", staticRouter);
+app.use("/url",restrictToLoggedInUserOnly, urlPostRoute);
+app.use("/url",restrictToLoggedInUserOnly, urlGetRoute);
 app.use("/user", userRoute);
+app.use("/", staticRouter);
 
 
 app.listen(PORT, () => {
