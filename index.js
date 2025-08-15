@@ -7,7 +7,7 @@ const { connectToMongoDB } = require("./connect");
 const app = express();
 dotenv.config();
 
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT;
 // middle ware
 const {restrictToLoggedInUserOnly, checkAuth} = require("./middlewares/auth");
 // routes
@@ -16,7 +16,7 @@ const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
  
-connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/Shortener").then(() => {
+connectToMongoDB(process.env.MONGO_URI).then(() => {
     console.log("MongoDB is connected");
 });
 
