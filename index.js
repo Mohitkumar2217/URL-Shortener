@@ -4,10 +4,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
 
-
 const app = express();
-const PORT = process.env.PORT || 8001;
 dotenv.config();
+
+const PORT = process.env.PORT || 8001;
 // middle ware
 const {restrictToLoggedInUserOnly, checkAuth} = require("./middlewares/auth");
 // routes

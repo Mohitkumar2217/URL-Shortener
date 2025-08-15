@@ -1,5 +1,8 @@
+const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
-const secret = "Mohitkava$32";
+dotenv.config();
+
+const secret =process.env.SECRET;
 // For statefull auth
 // const sessionIdToUserMap = new Map();
 
