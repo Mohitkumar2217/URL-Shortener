@@ -36,12 +36,12 @@ async function handleUserLogin(req, res) {
 
     const token = setUser(user);
     
-    // // cookies MDN check for multiple argumet
-    // res.cookie("uid", token);
-    // return res.redirect("/test");
+    // cookies MDN check for multiple argumet
+    res.cookie("token", token);
+    return res.redirect("/");
 
-    // headers MDN check
-    return res.json({ token });
+    // // headers MDN check
+    // return res.json({ token });
 }
 module.exports = {
     handleUserSignUp,

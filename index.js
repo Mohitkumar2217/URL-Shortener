@@ -9,7 +9,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 // middle ware
-const {restrictToLoggedInUserOnly, checkAuth} = require("./middlewares/auth");
+const {checkforAuthentication, restrictTo} = require("./middlewares/auth");
 // routes
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");
@@ -23,16 +23,17 @@ connectToMongoDB(process.env.MONGO_URI).then(() => {
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
-
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
+app.use(checkforAuthentication);
 
-
-app.use("/url",restrictToLoggedInUserOnly, urlPostRoute);
-app.use("/url",restrictToLoggedInUserOnly, urlGetRoute);
+// routes middlewares
+app.use("/url",restrictTo(['NORMAL']), urlPostRoute);
+app.use("/url",restrictTo(['NORMAL']), urlGetRoute);
 app.use("/user", userRoute);
-app.use("/",checkAuth, staticRouter);
+app.use("/", staticRouter);
 
 
 app.listen(PORT, () => {

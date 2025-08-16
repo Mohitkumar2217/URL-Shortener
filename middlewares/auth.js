@@ -1,6 +1,6 @@
 const { getUser } = require("../services/auth");
 
-function checkforAuthentication(req, res) {
+function checkforAuthentication(req, res, next) {
     // for headers
     const autherizationHeaderValue = req.headers.authorization;
     // check if not exits
