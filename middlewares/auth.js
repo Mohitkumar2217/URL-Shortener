@@ -6,7 +6,13 @@ async function restrictToLoggedInUserOnly(req, res, next) {
     // for headers
     const userUid = req.headers["Authorization"];
     if(!userUid) return res.redirect("/login");
+
+    // for headers 
+    const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
+
+    
     const user = getUser(userUid);
+
     if(!user) return res.redirect("/login"); 
     req.user = user;
     next();
