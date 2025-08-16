@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use("/url",restrictToLoggedInUserOnly, urlPostRoute);
 app.use("/url",restrictToLoggedInUserOnly, urlGetRoute);
 app.use("/user", userRoute);
-app.use("/", checkAuth, staticRouter);
+app.use("/",checkAuth, staticRouter);
 
 
 app.listen(PORT, () => {

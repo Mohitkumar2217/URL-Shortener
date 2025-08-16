@@ -1,5 +1,6 @@
 // const {v4: uuidv4} = require("uuid");
 // now do with token method
+// now header method
 const User = require("../models/user");
 const {setUser} = require("../services/auth");
 
@@ -17,6 +18,8 @@ async function handleUserSignUp(req, res) {
     return res.redirect("/login");
 }
 
+
+
 async function handleUserLogin(req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({
@@ -26,20 +29,19 @@ async function handleUserLogin(req, res) {
     if(!user) return res.render("login", {
         error: "Invalid Username or Passwaord"
     })
+    // // session id creating method 
     // const sessionId = uuidv4();
     // setUser(sessionId, user);
     // res.cookie("uid", sessionId);
+
     const token = setUser(user);
+    
     // // cookies MDN check for multiple argumet
-    // res.cookie("uid", token, {
-    //     expires: new Date(Date.now() + 300),
-    //     httpOnly: true,
-    // });
+    // res.cookie("uid", token);
     // return res.redirect("/test");
 
     // headers MDN check
     return res.json({ token });
-    
 }
 module.exports = {
     handleUserSignUp,

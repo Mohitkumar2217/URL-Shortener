@@ -1,40 +1,69 @@
 const { getUser } = require("../services/auth");
 
-async function restrictToLoggedInUserOnly(req, res, next) {
-    // // for cookies
-    // const userUid = req.cookies?.uid;
+function checkforAuthentication(req, res) {
     // for headers
-    const userUid = req.headers["authorization"];
-    if(!userUid) return res.redirect("/login");
-
-    // for headers 
-    const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
+    const autherizationHeaderValue = req.headers.authorization;
+    // check if not exits
+    if(!autherizationHeaderValue || !autherizationHeaderValue.startsWith('Bearer ')) {
+        return next();
+    }
+    // validation
+    const token = autherizationHeaderValue.split('Bearer ')[1];
     const user = getUser(token);
 
-    // // for cookies
-    // const user = getUser(userUid);
-    
-    if(!user) return res.redirect("/login"); 
     req.user = user;
-    next();
+    return next();
 }
 
-async function checkAuth(req, res, next) {
-    // // for cookies method
-    // const userUid = req.cookies?.uid;
-    // for headers method
-    const userUid = req.headers["authorization"];
-    const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
-    // // for cookies
-    // const user = getUser(userUid);
-
-    // for headers
-    const user = getUser(token);
-    req.user = user;
-    next();
+function restrictTo(roles) {
+    return (req, res, next) => {
+        // user check
+        if(!req.user) return res.redirect("/login");
+        // role check
+        if(!roles.includes(req.user.role)) return res.end("UnAuthorized");
+    }
 }
 
 module.exports = {
-    restrictToLoggedInUserOnly,
-    checkAuth,
+    checkforAuthentication,
+    restrictTo,
 }
+
+
+
+// async function restrictToLoggedInUserOnly(req, res, next) {
+
+//      // // for cookies
+//     // const userUid = req.cookies?.uid;
+
+//     if (!userUid) return res.redirect("/login");
+
+//     // for headers 
+//     const token = userUid.split('Bearer ')[1]; // Bearer 182ybdoh3rh03rih"
+//     const user = getUser(token);
+
+//     // // for cookies
+//     // const user = getUser(userUid);
+
+//     if (!user) return res.redirect("/login");
+//     req.user = user;
+//     next();
+// }
+
+// async function checkAuth(req, res, next) {
+
+//     // // for cookies method
+//     // const userUid = req.cookies?.uid;
+
+//     // for headers method
+//     const userUid = req.headers.authorization;
+//     const token = userUid.split('Bearer ')[1]; // Bearer 182ybdoh3rh03rih"
+
+//     // // for cookies
+//     // const user = getUser(userUid);
+
+//     // for headers
+//     const user = getUser(token);
+//     req.user = user;
+//     next();
+// }
