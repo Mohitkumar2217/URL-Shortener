@@ -9,6 +9,8 @@ async function restrictToLoggedInUserOnly(req, res, next) {
 
     // for headers 
     const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
+    const user = getUser(token);
+
     // // for cookies
     // const user = getUser(userUid);
     
@@ -25,7 +27,7 @@ async function checkAuth(req, res, next) {
     const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
     // // for cookies
     // const user = getUser(userUid);
-    
+
     // for headers
     const user = getUser(token);
     req.user = user;
