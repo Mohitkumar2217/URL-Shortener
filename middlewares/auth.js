@@ -9,18 +9,25 @@ async function restrictToLoggedInUserOnly(req, res, next) {
 
     // for headers 
     const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
-
+    // // for cookies
+    // const user = getUser(userUid);
     
-    const user = getUser(userUid);
-
     if(!user) return res.redirect("/login"); 
     req.user = user;
     next();
 }
 
 async function checkAuth(req, res, next) {
-    const userUid = req.cookies?.uid;
-    const user = getUser(userUid);
+    // // for cookies method
+    // const userUid = req.cookies?.uid;
+    // for headers method
+    const userUid = req.headers["Authorization"];
+    const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
+    // // for cookies
+    // const user = getUser(userUid);
+    
+    // for headers
+    const user = getUser(token);
     req.user = user;
     next();
 }
