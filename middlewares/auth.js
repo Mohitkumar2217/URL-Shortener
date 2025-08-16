@@ -4,7 +4,7 @@ async function restrictToLoggedInUserOnly(req, res, next) {
     // // for cookies
     // const userUid = req.cookies?.uid;
     // for headers
-    const userUid = req.headers["Authorization"];
+    const userUid = req.headers["authorization"];
     if(!userUid) return res.redirect("/login");
 
     // for headers 
@@ -23,7 +23,7 @@ async function checkAuth(req, res, next) {
     // // for cookies method
     // const userUid = req.cookies?.uid;
     // for headers method
-    const userUid = req.headers["Authorization"];
+    const userUid = req.headers["authorization"];
     const token = userUid.split("Bearer ")[1]; // Bearer 182ybdoh3rh03rih"
     // // for cookies
     // const user = getUser(userUid);
