@@ -1,20 +1,18 @@
 const { getUser } = require("../services/auth");
 
+// #### For cookies use only
 function checkforAuthentication(req, res, next) {
-    // for headers
-    const autherizationHeaderValue = req.headers.authorization;
+    // for cookiess
+    const tokenCookie = req.cookies?.token;
+    req.user = null;
     // check if not exits
-    if(!autherizationHeaderValue || !autherizationHeaderValue.startsWith('Bearer ')) {
-        return next();
-    }
+    if(!tokenCookie) return next();
     // validation
-    const token = autherizationHeaderValue.split('Bearer ')[1];
+    const token = tokenCookie;
     const user = getUser(token);
-
     req.user = user;
     return next();
 }
-
 function restrictTo(roles) {
     return (req, res, next) => {
         // user check
@@ -23,7 +21,7 @@ function restrictTo(roles) {
         if(!roles.includes(req.user.role)) return res.end("UnAuthorized");
     }
 }
-
+// ####
 module.exports = {
     checkforAuthentication,
     restrictTo,
@@ -51,7 +49,7 @@ module.exports = {
 // }
 
 // async function checkAuth(req, res, next) {
-
+    
 //     // // for cookies method
 //     // const userUid = req.cookies?.uid;
 
@@ -67,3 +65,26 @@ module.exports = {
 //     req.user = user;
 //     next();
 // }
+// #### For header use only
+// function checkforAuthentication(req, res, next) {
+//     // for headers
+//     const tokenCookie = req.headers.authorization;
+//     // check if not exits
+//     if(!tokenCookie || !tokenCookie.startsWith('Bearer ')) {
+//         return next();
+//     }
+//     // validation
+//     const token = tokenCookie.split('Bearer ')[1];
+//     const user = getUser(token);
+//     req.user = user;
+//     return next();
+// }
+// function restrictTo(roles) {
+//     return (req, res, next) => {
+//         // user check
+//         if(!req.user) return res.redirect("/login");
+//         // role check
+//         if(!roles.includes(req.user.role)) return res.end("UnAuthorized");
+//     }
+// }
+// ####
