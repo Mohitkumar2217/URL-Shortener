@@ -26,16 +26,20 @@ async function handleUserLogin(req, res) {
     if(!user) return res.render("login", {
         error: "Invalid Username or Passwaord"
     })
-
     // const sessionId = uuidv4();
     // setUser(sessionId, user);
     // res.cookie("uid", sessionId);
-    
     const token = setUser(user);
+    // // cookies MDN check for multiple argumet
+    // res.cookie("uid", token, {
+    //     expires: new Date(Date.now() + 300),
+    //     httpOnly: true,
+    // });
+    // return res.redirect("/test");
 
-    res.cookie("uid", token);
+    // headers MDN check
+    return res.json({ token });
     
-    return res.redirect("/test");
 }
 module.exports = {
     handleUserSignUp,
