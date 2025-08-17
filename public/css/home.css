@@ -1,3 +1,20 @@
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.container {
+  margin: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.historyClicks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
