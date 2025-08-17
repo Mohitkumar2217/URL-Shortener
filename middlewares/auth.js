@@ -1,6 +1,7 @@
 const { getUser } = require("../services/auth");
 
 // #### For cookies use only
+// authentication
 function checkforAuthentication(req, res, next) {
     // for cookiess
     const tokenCookie = req.cookies?.token;
@@ -13,12 +14,14 @@ function checkforAuthentication(req, res, next) {
     req.user = user;
     return next();
 }
+//authorization
 function restrictTo(roles) {
     return (req, res, next) => {
         // user check
         if(!req.user) return res.redirect("/login");
         // role check
         if(!roles.includes(req.user.role)) return res.end("UnAuthorized");
+        return next();
     }
 }
 // ####

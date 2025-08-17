@@ -16,7 +16,7 @@ const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
  
-connectToMongoDB(process.env.MONGO_URI).then(() => {
+connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/urlshortener").then(() => {
     console.log("MongoDB is connected");
 });
 
@@ -30,8 +30,8 @@ app.use(cookieParser());
 app.use(checkforAuthentication);
 
 // routes middlewares
-app.use("/url",restrictTo(['NORMAL']), urlPostRoute);
-app.use("/url",restrictTo(['NORMAL']), urlGetRoute);
+app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlPostRoute);
+app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/user", userRoute);
 app.use("/", staticRouter);
 
