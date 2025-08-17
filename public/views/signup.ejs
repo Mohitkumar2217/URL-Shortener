@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="../css/signup.css">
   </head>
   <body>
-    <h1>SignUp</h1>
-    <form action="/user" method="post">
-
-      <label for="">Full Name</label>
-      <input type="text" required name="name" id="fullName">
-
-      <label for="">Email</label>
+    <div class="container">
+      <h1>SignUp</h1>
+    </div>
+    <div class="signForm">
+      <form action="/user" method="post">
+        
+        <label for="">Full Name</label>
+        <input type="text" required name="name" id="fullName">
+        
+        <label for="">Email</label>
       <input type="text" required name="email" id="fullEmail">
 
       <label for="">Password</label>
@@ -21,8 +24,9 @@
 
       <label for="">Confirm Password</label>
       <input type="password" required name="confirmpass" id="fullcPassword">
-
+      
       <button type="submit">SignUp</button>
     </form>
+  </div>
   </body>
 </html>
