@@ -12,9 +12,10 @@ body {
   flex-direction: column;
 }
 
-form {
+.loginForm {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 1%;
 }
