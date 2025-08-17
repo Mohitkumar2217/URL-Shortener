@@ -4,14 +4,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .container {
-  margin: 4%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-form {
+  margin: 2%;
   display: flex;
   justify-content: center;
   align-items: center;
