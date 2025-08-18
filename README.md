@@ -108,6 +108,8 @@ URL-Shortener/
 - [ ] QR code generation
 - [ ] Link expiry and analytics
 - [ ] Admin dashboard
+- [ ] free generation first 5
+- [ ] user dashboard
 
 ---
 
