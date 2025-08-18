@@ -22,9 +22,9 @@ A sleek and minimal URL shortening service built with Node.js, Express, MongoDB,
 
 | Layer       | Technology            |
 |------------|------------------------|
-| Frontend   | HTML, CSS, JavaScript  |
+| Frontend   | EJS, CSS, JavaScript  |
 | Backend    | Node.js, Express.js    |
-| Database   | MongoDB (Atlas)        |
+| Database   | MongoDB        |
 | Deployment | Render                 |
 
 ---
