@@ -12,14 +12,20 @@
     </div>
     <div class="loginForm">
       <form action="/user/login" method="post">
+
+        <div class="emailcontainer">
+          <label for="fullEmail">Email</label>
+          <input type="eamil" required name="email" id="fullEmail">
+        </div>
         
-        <label for="fullEmail">Email</label>
-        <input type="eamil" required name="email" id="fullEmail">
+        <div class="passcontainer">
+          <label for="fullPassword">Password</label>
+          <input type="password" required name="password" id="fullPassword">
+        </div>   
         
-        <label for="fullPassword">Password</label>
-        <input type="password" required name="password" id="fullPassword">
-        
-        <button type="submit">Login</button>
+        <div class="buttoncontainer">
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
   </body>
