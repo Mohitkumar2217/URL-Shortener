@@ -45,9 +45,12 @@ URL-Shortener/
 │   └── user.js
 ├── public/           # frontend
 │   ├── css/
-|   |   └── style.css
+|   |   ├── home.css
+|   |   ├── signup.css
+|   |   └── login.css
 │   ├── jss/
 │   |   └── script.js
+│   ├──  views/
 │   └── URL.html
 ├── routes/           # backend
 │   ├── geturl.js
