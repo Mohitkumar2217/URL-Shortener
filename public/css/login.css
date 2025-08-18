@@ -24,9 +24,19 @@ body {
 .emailcontainer {
   display: flex;
   margin: 10px;
+  width: 25%;
 }
 .emailcontainer label {
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 1%;
+}
+
+#fullEmail {
+  background-color: white;
+  border: none;
+  border-radius: 5%;
+  color: black;
 }
 
 /* password */
@@ -34,9 +44,23 @@ body {
   display: flex;
   margin: 10px;
 }
+#fullPassword {
+  background-color: white;
+  border: none;
+  border-radius: 5%;
+  color: black;
+}
 
 /* button */
 .buttoncontainer {
   display: flex;
   margin: 10px;
+}
+
+button {
+  background-color: white;
+  border: 2px solid black;
+  background-color: blue;
+  border-radius: 5%;
+  color: black;
 }
