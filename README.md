@@ -22,9 +22,9 @@ A sleek and minimal URL shortening service built with Node.js, Express, MongoDB,
 
 | Layer       | Technology            |
 |------------|------------------------|
-| Frontend   | HTML, CSS, JavaScript  |
+| Frontend   | EJS, CSS, JavaScript  |
 | Backend    | Node.js, Express.js    |
-| Database   | MongoDB (Atlas)        |
+| Database   | MongoDB        |
 | Deployment | Render                 |
 
 ---
@@ -45,9 +45,12 @@ URL-Shortener/
 │   └── user.js
 ├── public/           # frontend
 │   ├── css/
-|   |   └── style.css
+|   |   ├── home.css
+|   |   ├── signup.css
+|   |   └── login.css
 │   ├── jss/
 │   |   └── script.js
+│   ├──  views/
 │   └── URL.html
 ├── routes/           # backend
 │   ├── geturl.js
@@ -108,6 +111,8 @@ URL-Shortener/
 - [ ] QR code generation
 - [ ] Link expiry and analytics
 - [ ] Admin dashboard
+- [ ] free generation first 5
+- [ ] user dashboard
 
 ---
 
