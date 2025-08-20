@@ -12,17 +12,27 @@
     </div>
     <div class="signForm">
       <form action="/user" method="post">
-        <label for="">Full Name</label>
-        <input type="text" required name="name" id="fullName" />
-
-        <label for="">Email</label>
-        <input type="text" required name="email" id="fullEmail" />
-
-        <label for="">Password</label>
-        <input type="password" required name="password" id="fullPassword" />
-
-        <label for="">Confirm Password</label>
-        <input type="password" required name="confirmpass" id="fullcPassword" />
+        <div class="namecontainer">
+          <label for="">Full Name</label>
+          <input type="text" required name="name" id="fullName" />
+        </div>
+        <div class="emailcontainer">
+          <label for="">Email</label>
+          <input type="text" required name="email" id="fullEmail" />
+        </div>
+        <div class="passwordcontainer">
+          <label for="">Password</label>
+          <input type="password" required name="password" id="fullPassword" />
+        </div>
+        <div class="confirmpasscontainer">
+          <label for="">Confirm Password</label>
+          <input
+            type="password"
+            required
+            name="confirmpass"
+            id="fullcPassword"
+          />
+        </div>
 
         <button type="submit">SignUp</button>
       </form>
