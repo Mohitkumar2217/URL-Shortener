@@ -78,3 +78,14 @@ button {
   width: 10vmin;
   color: black;
 }
+
+
+/* signup */
+
+.signupconotainer {
+  display: flex;
+}
+
+.signupconotainer a {
+  text-decoration: none;
+}
