@@ -18,3 +18,13 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+/* already login */
+
+.loginalready {
+  display: flex;
+}
+
+.loginalready a {
+  text-decoration: none;
+}
