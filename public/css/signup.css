@@ -43,6 +43,12 @@ body {
   justify-content: space-between;
 }
 
+/* button */
+.signupbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* already login */
 
 .loginalready {
