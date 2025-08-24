@@ -31,7 +31,7 @@ body {
   margin: 1%;
 }
 #fullName {
-  background-color: white;
+  /* background-color: white; */
   border: none;
   width: 100%;
   color: black;
@@ -49,7 +49,7 @@ body {
   margin: 1%;
 }
 #fullEmail {
-  background-color: white;
+  /* background-color: white; */
   border: none;
   width: 100%;
   color: black;
@@ -67,7 +67,7 @@ body {
   margin: 1%;
 }
 #fullPassword {
-  background-color: white;
+  /* background-color: white; */
   border: none;
   width: 100%;
   color: black;
@@ -85,7 +85,7 @@ body {
   margin: 1%;
 }
 #fullcPassword {
-  background-color: white;
+  /* background-color: white; */
   border: none;
   width: 100%;
   color: black;
