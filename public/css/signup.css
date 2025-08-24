@@ -38,7 +38,7 @@ body {
   margin: 1%;
 }
 #fullEmail {
-  background-color:aquamarine;
+  background-color: white;
   border: none;
   width: 100%;
   color: black;
@@ -49,6 +49,17 @@ body {
   display: flex;
   margin: 4% 0%;
   justify-content: space-between;
+}
+.passwordcontainer label {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 1%;
+}
+#fullPassword {
+  background-color: white;
+  border: none;
+  width: 100%;
+  color: black;
 }
 
 /* confirmpasscontainer */
