@@ -19,6 +19,24 @@ body {
   flex-direction: column;
 }
 
+/* namecontainer */
+.namecontainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* emailcontainer */
+.emailcontainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* passwordcontainer */
+.passwordcontainer{
+  display: flex;
+  justify-content: space-between;
+}
+
 /* already login */
 
 .loginalready {
