@@ -11,8 +11,7 @@
       <h1>Login</h1>
     </div>
     <div class="loginForm">
-      <form action="/user/login" method="post">
-
+      <form action="/user/login" method="post" onsubmit="handleLogin(event)">
         <div class="emailcontainer">
           <label for="fullEmail">Email: </label>
           <input type="eamil" required name="email" id="fullEmail" placeholder="email@.com">
