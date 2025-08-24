@@ -27,11 +27,11 @@ body {
 }
 .namecontainer label {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 1%;
 }
 #fullName {
-  /* background-color: white; */
+  background-color:azure;
   border: none;
   width: 100%;
   color: black;
@@ -45,11 +45,11 @@ body {
 }
 .emailcontainer label {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 1%;
 }
 #fullEmail {
-  /* background-color: white; */
+  background-color:azure;
   border: none;
   width: 100%;
   color: black;
@@ -63,11 +63,11 @@ body {
 }
 .passwordcontainer label {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 1%;
 }
 #fullPassword {
-  /* background-color: white; */
+  background-color:azure;
   border: none;
   width: 100%;
   color: black;
@@ -81,11 +81,11 @@ body {
 }
 .confirmpasscontainer label {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 1%;
 }
 #fullcPassword {
-  /* background-color: white; */
+  background-color:azure;
   border: none;
   width: 100%;
   color: black;
