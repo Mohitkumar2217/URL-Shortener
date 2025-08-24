@@ -33,7 +33,7 @@ body {
 #fullName {
   background-color:azure;
   border: none;
-  width: 100%;
+  width: 80%;
   color: black;
 }
 
@@ -51,7 +51,7 @@ body {
 #fullEmail {
   background-color:azure;
   border: none;
-  width: 100%;
+  width: 80%;
   color: black;
 }
 
@@ -69,7 +69,7 @@ body {
 #fullPassword {
   background-color:azure;
   border: none;
-  width: 100%;
+  width: 80%;
   color: black;
 }
 
@@ -87,7 +87,7 @@ body {
 #fullcPassword {
   background-color:azure;
   border: none;
-  width: 100%;
+  width: 47%;
   color: black;
 }
 
