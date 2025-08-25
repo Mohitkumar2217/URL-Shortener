@@ -36,6 +36,12 @@ app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/user", userRoute);
 app.use("/", staticRouter);
 
+// Server-side route (optional, for token blacklist)
+app.get('/logout', (req, res) => {
+  res.clearCookie('token'); // or whatever your cookie name is
+  res.redirect('/login');
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
