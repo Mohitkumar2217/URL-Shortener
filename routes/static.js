@@ -27,4 +27,10 @@ router.get("/login", async (req, res) => {
     return res.render("login");
 })
 
+// Server-side route (optional, for token blacklist)
+router.get('/logout', async (req, res) => {
+  res.clearCookie('token'); // or whatever your cookie name is
+  return res.redirect('/login');
+})
+
 module.exports = router;
