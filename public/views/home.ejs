@@ -10,7 +10,9 @@
   <body>
     <div class="container">
       <h1>URL Shortener</h1>
-      <button>Login</button>
+      <button id="Logout">
+        <a href="http://localhost:8001/logout">Logout</a>
+      </button>
       <% if (locals.id) { %>
         URL Generate: <a href='http://localhost:8001/url/<%= id %>' > http://localhost:8001/url/<%= id %></a> 
         <% } %>
