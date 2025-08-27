@@ -1,7 +1,7 @@
-function handleLogin(e) {
-  e.preventDefault(); // prevent page reload
-  // ... your login logic here ...
+const { response } = require("express");
 
-  // Reset form fields
-  document.getElementById("loginForm").reset();
-}
+const logout = document.querySelector("Logout");
+
+logout.addEventListener("onclick", (req, res) => {
+  
+})
