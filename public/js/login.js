@@ -1,7 +1,4 @@
-const { response } = require("express");
-
-const logout = document.querySelector("Logout");
-
-logout.addEventListener("onclick", (req, res) => {
-  
-})
+function handleLogin(e) {
+  e.preventDefault(); // prevent page reload
+  document.getElementById("loginForm").reset();
+}
