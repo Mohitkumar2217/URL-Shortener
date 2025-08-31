@@ -1,5 +1,8 @@
-function handleLogin(e) {
-  e.preventDefault(); // prevent page reload
-  document.getElementById("loginForm").reset();
-}
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("click", (event) => {
+  event.preventDefault();
+  loginForm.reset();
+})
+
 
