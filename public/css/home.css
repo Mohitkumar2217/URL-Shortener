@@ -20,7 +20,7 @@ body {
 
 #Logout a {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 
@@ -30,7 +30,7 @@ button {
   cursor: pointer;
 }
 
-.loginbtn {
+.logoutbtn {
   display: flex;
   justify-content: end;
   align-items: center;
