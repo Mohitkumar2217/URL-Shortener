@@ -32,6 +32,8 @@ button {
 
 .logoutbtn {
   display: flex;
-  justify-content: end;
+  margin-left: 90%;
+  margin-top: 2%;
+  margin-bottom: none;
   align-items: center;
 }
