@@ -14,4 +14,8 @@ GET/:id - redirects the user to the original URL.
 
 GET/URL/analtics/:id - returns the clicks for the provided short id\
 
+GET/login for login in page
 
+POST/signup for signup in page
+ 
+home page creating
