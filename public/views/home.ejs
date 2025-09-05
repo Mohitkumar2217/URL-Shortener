@@ -4,65 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/home.css" />
   </head>
 
   <body>
     <nav>
       <div class="navigation">
         <ul>
-          <li>one</li>
-          <li>one</li>
-          <li>one</li>
-          <li>one</li>
-          <li>one</li>
+          <li>home</li>
+          <li>services</li>
+          <li>information</li>
+          <li>about us</li>
+          <li>history</li>
         </ul>
       </div>
+      <div class="logoutbtn">
+        <button id="Logout">
+          <a href="http://localhost:8001/logout">Logout</a>
+        </button>
+      </div>
     </nav>
-    <div class="logoutbtn">
-      <button id="Logout">
-        <a href="http://localhost:8001/logout">Logout</a>
-      </button>
-    </div>
-    
+
     <div class="container">
       <h1>URL Shortener</h1>
-      <% if (locals.id) { %>
-        URL Generate: <a href='http://localhost:8001/url/<%= id %>' > http://localhost:8001/url/<%= id %></a> 
-        <% } %>
-        <form method="POST" action="/url">
-          <label for="Original_URL">Enter Your Original URL</label>
-          <input
+      <% if (locals.id) { %> URL Generate:
+      <a href="http://localhost:8001/url/<%= id %>">
+        http://localhost:8001/url/<%= id %></a
+      >
+      <% } %>
+      <form method="POST" action="/url">
+        <label for="Original_URL">Enter Your Original URL</label>
+        <input
           type="text"
           name="url"
           id="Original_URL"
           placeholder="http://example.com"
-          />
-          <button type="submit">Generate</button>        
-        </form>
-      </div>
-      
-      <div class="historyClicks">
-        <% if (locals.urls) { %>
-          <table>
-            <thead>
-              <th>S.No.</th>
-              <th>ShortId</th>
-              <th>Redirect</th>
-              <th>Clicks</th>
-            </thead>
-            <tbody>
-              <% urls.forEach((url, index) => { %>
-                <tr>
-                  <td><%= index + 1 %></td>
-                  <td><a href="http://localhost:8001/url/<%= url.shortId %>" >http://localhost:8001/url/<%= url.shortId %> </a></td>
-                  <td><%= url.redirectId %></td>
-                  <td><%= url.visitHistory.length %></td>
-                </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        <% } %>
-      </div>
+        />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+
+    <div class="historyClicks">
+      <% if (locals.urls) { %>
+      <table>
+        <thead>
+          <th>S.No.</th>
+          <th>ShortId</th>
+          <th>Redirect</th>
+          <th>Clicks</th>
+        </thead>
+        <tbody>
+          <% urls.forEach((url, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <a href="http://localhost:8001/url/<%= url.shortId %>"
+                >http://localhost:8001/url/<%= url.shortId %>
+              </a>
+            </td>
+            <td><%= url.redirectId %></td>
+            <td><%= url.visitHistory.length %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
   </body>
 </html>
