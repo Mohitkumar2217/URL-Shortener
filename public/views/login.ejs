@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <nav>
-      <div class="navigation">
-        <ul>
-          <li>home</li>
-          <li>services</li>
-          <li>information</li>
-          <li>about us</li>
-          <li>history</li>
-        </ul>
-      </div>
-    </nav>
+    <div class="navbar">
+      <nav>
+        <div class="navigation">
+          <ul>
+            <li>home</li>
+            <li>services</li>
+            <li>information</li>
+            <li>about us</li>
+            <li>history</li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div class="container">
       <h1>Login</h1>
     </div>
@@ -25,14 +27,26 @@
       <form action="/user/login" method="post" onsubmit="handleLogin(event)">
         <div class="emailcontainer">
           <label for="fullEmail">Email: </label>
-          <input type="eamil" required name="email" id="fullEmail" placeholder="email@.com">
+          <input
+            type="eamil"
+            required
+            name="email"
+            id="fullEmail"
+            placeholder="email@.com"
+          />
         </div>
-        
+
         <div class="passcontainer">
           <label for="fullPassword">Password</label>
-          <input type="password" required name="password" id="fullPassword" placeholder="password">
-        </div>   
-        
+          <input
+            type="password"
+            required
+            name="password"
+            id="fullPassword"
+            placeholder="password"
+          />
+        </div>
+
         <div class="buttoncontainer">
           <button type="submit">Login</button>
         </div>
