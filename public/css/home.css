@@ -4,9 +4,24 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.navigation ul {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  gap: 5%;
+  align-items: center;
+}
 .navigation ul li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   list-style: none;
 }
+
+.navigation ul li:hover{
+  list-style: circle;
+}
+
 .container {
   margin: 4%;
   display: flex;
