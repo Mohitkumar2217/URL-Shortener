@@ -4,6 +4,10 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 /* nav bar */
+nav {
+  background-color: aqua;
+}
+
 .navigation ul {
   display: flex;
   justify-content: space-evenly;
