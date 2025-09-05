@@ -20,6 +20,7 @@ nav {
   justify-content: center;
   align-items: center;
   list-style: none;
+  cursor:pointer;
 }
 
 .navigation ul li:hover{
