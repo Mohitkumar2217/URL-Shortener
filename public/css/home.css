@@ -4,6 +4,9 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.navigation ul li{
+  list-style: none;
+}
 .container {
   margin: 4%;
   display: flex;

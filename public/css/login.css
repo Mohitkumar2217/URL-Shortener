@@ -8,6 +8,11 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* nav bar  */
+.navigation ul li{
+  list-style: none;
+}
+
 /* whole body */
 .container {
   margin: 6%;
