@@ -61,3 +61,14 @@ button {
   margin-bottom: none;
   align-items: center;
 }
+
+.historyClicks {
+  display: flex;
+  /* max-width: 80%; */
+  overflow: hidden;
+}
+tbody tr td {
+  max-width: 300px;
+  overflow:scroll;
+  scrollbar-width: none;
+}
