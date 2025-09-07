@@ -11,7 +11,9 @@
     <nav>
       <div class="navigation">
         <ul>
-          <li>home</li>
+          <li>
+            home
+          </li>
           <li>services</li>
           <li>information</li>
           <li>about us</li>
@@ -31,8 +33,7 @@
       <h1>URL Shortener</h1>
       <% if (locals.id) { %> URL Generate:
       <a href="http://localhost:8001/url/<%= id %>">
-        http://localhost:8001/url/<%= id %></a
-      >
+        http://localhost:8001/url/<%= id %></a>
       <% } %>
       <form method="POST" action="/url">
         <label for="Original_URL">Enter Your Original URL</label>
