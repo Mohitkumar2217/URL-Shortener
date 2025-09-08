@@ -32,7 +32,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">History</a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >History</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -91,9 +93,9 @@
               Search
             </button>
           </form>
-          <div class="logout-navbar">
-            <a href="#">Logout</a>
-          </div>
+          <form action="/login" method="POST">
+            <button type="submit">Logout</button>
+          </form>
         </div>
       </div>
     </nav>
@@ -118,7 +120,6 @@
         <li class="breadcrumb-item active" aria-current="page">Data</li>
       </ol>
     </nav>
-
 
     <div class="container">
       <h1>URL Shortener</h1>
@@ -165,7 +166,6 @@
       </table>
       <% } %>
     </div>
-    <script src="../js/login.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
