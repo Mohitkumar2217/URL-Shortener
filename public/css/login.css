@@ -14,7 +14,7 @@ body {
   display: flex;
 } */
 
-.container-fluid {
+/* .container-fluid {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   list-style: none;
-}
+} */
 
 
 /* whole body */
