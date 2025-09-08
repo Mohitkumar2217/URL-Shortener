@@ -1,4 +1,4 @@
-const loginForm = document.getElementById("loginForm");
+const loginForm = document.getElementById("logout-navbar");
 
 loginForm.addEventListener("click", (event) => {
   event.preventDefault();
