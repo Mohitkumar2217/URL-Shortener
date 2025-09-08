@@ -28,6 +28,9 @@ status : Done
 // POST/signup for signup in page
 status : Done
 
+// mongodb connnet 
+status : Done
+
 // database connecting for historyClicks
 status : Done
 
