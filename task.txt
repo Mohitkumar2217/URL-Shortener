@@ -1,21 +1,53 @@
-URL Shortner
+// URL Shortner
+status : running
 
-Design Url shortner service that take in a valid URL and 
-returns a shortned Url, redirecting the user to the previously provided Url
+// Design Url shortner service that take in a valid URL and 
+status : Done
 
-also, keep track of total visits/clicks on the URL.
+// returns a shortned Url, redirecting the user to the previously provided Url
+status : Done 
 
-Routes
+// also, keep track of total visits/clicks on the URL.
+status : Done
 
-POST/ URL - Generates a new Short URl and returns the shortened URl in the format example.com/random-id.
+// Routes
+status : Done
 
+// POST/ URL - Generates a new Short URl and returns the shortened URl in the format example.com/random-id.
+status : Done
 
-GET/:id - redirects the user to the original URL.
+// GET/:id - redirects the user to the original URL.
+status : Done
 
-GET/URL/analtics/:id - returns the clicks for the provided short id\
+// GET/URL/analtics/:id - returns the clicks for the provided short id\
+status : Done
 
-GET/login for login in page
+// GET/login for login in page
+status : Done
 
-POST/signup for signup in page
- 
-home page creating
+// POST/signup for signup in page
+status : Done
+
+// database connecting for historyClicks
+status : Done
+
+// database for user stored
+status : Done
+
+// authentication
+status : Done
+
+// authrization
+status : Done
+
+// home page creating
+status : Done
+
+// refining my Routes
+status : not started
+
+// adding more features
+status : not started 
+
+// dividiing block 
+status : not started
