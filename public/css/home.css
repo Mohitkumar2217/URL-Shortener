@@ -7,29 +7,6 @@ body {
 :root {
   --color: rgb(248 249 250);
 }
-/* nav bar  */
-/* nav {
-  background-color: aqua; 
-} */
- 
-.navigation ul {
-  display: flex;
-  justify-content: space-evenly;
-  width: 90%;
-  gap: 5%;
-  align-items: center;
-}
-.navigation ul li{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  cursor:pointer;
-}
-
-.navigation ul li:hover{
-  list-style: circle;
-}
 
 .container {
   margin: 4%;
@@ -38,18 +15,12 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
 .historyClicks {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-#Logout a {
-  text-decoration: none;
-  color: black;
-}
-
-
 
 
 .logoutbtn {
