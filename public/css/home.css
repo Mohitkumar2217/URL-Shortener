@@ -4,7 +4,9 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+:root {
+  --color: rgb(248 249 250);
+}
 /* nav bar  */
 /* nav {
   background-color: aqua; 
@@ -48,11 +50,6 @@ body {
 }
 
 
-button {
-  color: black;
-  background-color: aqua;
-  cursor: pointer;
-}
 
 
 .logoutbtn {
@@ -72,4 +69,18 @@ tbody tr td {
   max-width: 300px;
   overflow:scroll;
   scrollbar-width: none;
+}
+
+/* logout */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoutbtn {
+  background-color: var(--color);
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
 }
