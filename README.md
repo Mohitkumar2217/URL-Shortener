@@ -50,8 +50,10 @@ URL-Shortener/
 |   |   └── login.css
 │   ├── jss/
 │   |   └── script.js
-│   ├──  views/
-│   └── URL.html
+│   ├── views/
+|   |   ├── login.ejs
+|   |   ├── home.ejs
+│   |   └── signup.ejs
 ├── routes/           # backend
 │   ├── geturl.js
 │   ├── posturl.js
@@ -59,10 +61,6 @@ URL-Shortener/
 │   └── user.js
 ├── services/           # Backend 
 │   └── auth.js
-├── views/        # Backend 
-|   ├── home.ejs
-|   ├── login.ejs
-│   └── signup.js
 ├── .env              # Environment variables
 ├── .gitignore
 ├── connect.js
