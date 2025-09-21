@@ -54,3 +54,6 @@ status : not started
 
 // dividiing block 
 status : not started
+
+// clear history adding
+status : not started
