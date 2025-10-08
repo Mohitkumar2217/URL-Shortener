@@ -36,8 +36,6 @@ app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/user", userRoute);
 app.use("/", staticRouter);
 
-
-
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 })
