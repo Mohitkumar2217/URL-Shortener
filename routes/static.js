@@ -26,6 +26,9 @@ router.get("/signup", async (req, res) => {
 router.get("/login", async (req, res) => {
     return res.render("login");
 })
+router.get("/history", async (req, res) => {
+    return res.render("history");
+})
 
 // Server-side route (optional, for token blacklist)
 router.get('/logout', async (req, res) => {

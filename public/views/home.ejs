@@ -17,7 +17,7 @@
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg shadow-sm">
       <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="#">Home</a>
+        <a class="navbar-brand fw-bold" href="/">Home</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
+              <a class="nav-link active" aria-current="page" href="/history"
                 >History</a
               >
             </li>
@@ -86,7 +86,9 @@
           </form>
 
           <form action="/logout" method="GET">
-            <button type="submit" class="btn logout-navbar btn-danger">Logout</button>
+            <button type="submit" class="btn logout-navbar btn-danger">
+              Logout
+            </button>
           </form>
         </div>
       </div>
@@ -155,8 +157,7 @@
                     href="http://localhost:8001/url/<%= url.shortId %>"
                     class="text-decoration-none"
                   >
-                    http://localhost:8001/url/<%=
-                    url.shortId %>
+                    http://localhost:8001/url/<%= url.shortId %>
                   </a>
                 </td>
                 <td class="text-break"><%= url.redirectId %></td>
