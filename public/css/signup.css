@@ -1,137 +1,105 @@
+/* ===== Base Styles ===== */
 body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+  color: #333;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-/* nav bar */
-nav {
-  background-color: aqua;
 }
 
-.navigation ul {
-  display: flex;
-  justify-content: space-evenly;
-  width: 90%;
-  gap: 5%;
-  align-items: center;
-}
-.navigation ul li{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  cursor:pointer;
+.navbar .nav-link:hover {
+  color: #ffdd57 !important; /* gold highlight */
 }
 
-.navigation ul li:hover{
-  list-style: circle;
+.navbar .dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.container {
-  margin: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.navbar .dropdown-item:hover {
+  background-color: #f0f4ff;
+}
+
+/* ===== Container / Card ===== */
+.container h1 {
+  text-align: center;
+  color: #1e3a8a;
+  margin: 30px 0 20px;
+  font-weight: 700;
 }
 
 .signForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 30px 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* namecontainer */
-.namecontainer{
-  display: flex;
-  margin: 4% 0%;
-  justify-content: space-between;
-}
-.namecontainer label {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 1%;
-}
-#fullName {
-  background-color:azure;
-  border: none;
-  width: 80%;
-  color: black;
+/* ===== Form Inputs ===== */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
-/* emailcontainer */
-.emailcontainer{
-  display: flex;
-  margin: 4% 0%;
-  justify-content: space-between;
-}
-.emailcontainer label {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 1%;
-}
-#fullEmail {
-  background-color:azure;
-  border: none;
-  width: 80%;
-  color: black;
+input:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.3);
+  outline: none;
 }
 
-/* passwordcontainer */
-.passwordcontainer{
-  display: flex;
-  margin: 4% 0%;
-  justify-content: space-between;
-}
-.passwordcontainer label {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 1%;
-}
-#fullPassword {
-  background-color:azure;
-  border: none;
-  width: 80%;
-  color: black;
+/* ===== Labels ===== */
+label {
+  font-weight: 600;
+  color: #1e3a8a;
 }
 
-/* confirmpasscontainer */
-.confirmpasscontainer{
-  display: flex;
-  margin: 4% 0%;
-  justify-content: space-between;
-}
-.confirmpasscontainer label {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 1%;
-}
-#fullcPassword {
-  background-color:azure;
-  border: none;
-  width: 47%;
-  color: black;
-}
-
-/* button */
-.signupbutton {
-  display: flex;
-  margin: 4% 0%;
-  justify-content: center;
-  align-items: center;
-}
-
+/* ===== Buttons ===== */
 button {
+  background-color: #1e3a8a;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 0;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* already login */
-
-.loginalready {
-  display: flex;
+button:hover {
+  background-color: #ffdd57;
+  color: #1e3a8a;
 }
 
+/* ===== Links ===== */
 .loginalready a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #1e3a8a;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.loginalready a:hover {
+  color: #ffdd57;
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+  .signForm {
+    margin: 20px 15px;
+    padding: 20px;
+  }
 }
