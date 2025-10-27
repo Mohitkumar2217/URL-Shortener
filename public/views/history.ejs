@@ -105,7 +105,6 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">History</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
       </ol>
     </nav>
 
@@ -124,8 +123,8 @@
           <tr>
             <td><%= index + 1 %></td>
             <td>
-              <a href="https://url-shortener-1-9443.onrender.com/url/<%= url.shortId %>"
-                >https://url-shortener-1-9443.onrender.com/url/<%= url.shortId %>
+              <a href="http://localhost:8001/url/<%= url.shortId %>"
+                >http://localhost:8001/url/<%= url.shortId %>
               </a>
             </td>
             <td><%= url.redirectId %></td>
