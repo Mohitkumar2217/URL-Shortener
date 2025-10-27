@@ -1,16 +1,31 @@
+/* ===== Base Styles ===== */
 body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+  color: #333;
   margin: 0;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ===== Navbar ===== */
+.navbar {
+  background-color: #1e3a8a !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-brand {
+  color: #f0f4ff !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link {
+  color: #f0f4ff !important;
+  transition: 0.2s;
+}
 
 .navbar .nav-link:hover {
-  color: #ffdd57 !important; /* gold highlight */
+  color: #ffdd57 !important;
 }
 
 .navbar .dropdown-menu {
@@ -23,145 +38,50 @@ body {
   background-color: #f0f4ff;
 }
 
-
-/* nav bar  */
-/* .navbar {
-  display: flex;
-} */
-
-/* .container-fluid {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.navbar-collapse ul {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
-} */
-
-
-/* whole body */
-.container {
-  margin: 6%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.loginForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-/* email */
-.emailcontainer {
-  display: flex;
-  margin: 10px;
-  /* width: 25%; */
-}
-.emailcontainer label {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 1%;
-}
-
-#fullEmail {
-  background-color: white;
-  border: none;
-  border-radius: 5%;
-  width: 100%;
-  color: black;
-}
-
-/* password */
-.passcontainer {
-  display: flex;
-  margin: 10px;
-}
-.passcontainer label {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 1%;
-}
-#fullPassword {
-  background-color: white;
-  border: none;
-  border-radius: 5%;
-  width: 100%;
-  color: black;
-}
-
-/* button */
-.buttoncontainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-}
-
-button {
-  border: 2px solid black;
-  background-color: rgb(62, 62, 218);
-  border-radius: 5%;
-  width: 10vmin;
-  color: black;
-  cursor: pointer;
-}
-
-
-/* signup */
-
-.signupconotainer {
-  display: flex;
-}
-
-.signupconotainer a {
-  text-decoration: none;
-}
- 
-/* ===== Base Styles ===== */
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
 /* ===== Container / Card ===== */
 .container {
   max-width: 450px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-.loginForm {
-  background: #ffffff;
-  padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 50px auto 20px;
+  padding: 0 15px;
 }
 
 h1 {
   text-align: center;
   color: #1e3a8a;
+  font-weight: 700;
   margin-bottom: 25px;
 }
 
-/* ===== Form Inputs ===== */
+.loginForm {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 30px 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== Form Input Containers ===== */
+.emailcontainer,
+.passcontainer {
+  display: flex;
+  flex-direction: column; /* label on top */
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 5px;
+}
+
+/* ===== Inputs ===== */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 10px 12px;
-  margin-top: 5px;
-  margin-bottom: 15px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 15px;
@@ -175,11 +95,16 @@ input:focus {
 }
 
 /* ===== Buttons ===== */
-button {
+.buttoncontainer {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.buttoncontainer button {
   background-color: #1e3a8a;
   color: #fff;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 12px 0;
   width: 100%;
   border: none;
   border-radius: 8px;
@@ -187,16 +112,22 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
+.buttoncontainer button:hover {
   background-color: #ffdd57;
   color: #1e3a8a;
 }
 
-/* ===== Links ===== */
+/* ===== Signup Link ===== */
+.signupconotainer {
+  margin-top: 15px;
+  text-align: center;
+}
+
 .signupconotainer a {
   color: #1e3a8a;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
 .signupconotainer a:hover {
@@ -204,17 +135,11 @@ button:hover {
   text-decoration: underline;
 }
 
-/* ===== Labels ===== */
-label {
-  font-weight: 600;
-  color: #1e3a8a;
-}
-
-/* ===== Responsive adjustments ===== */
+/* ===== Responsive ===== */
 @media (max-width: 576px) {
   .container {
-    margin: 20px;
-    padding: 15px;
+    margin: 20px auto;
+    padding: 0 10px;
   }
   .loginForm {
     padding: 20px;
