@@ -14,24 +14,21 @@
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg shadow-sm">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand fw-bold" href="/">Home</a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
+              <a class="nav-link active" aria-current="page" href="/history"
                 >History</a
               >
             </li>
@@ -52,9 +49,7 @@
                 <li><a class="dropdown-item" href="#">Clear History</a></li>
                 <li><a class="dropdown-item" href="#">Save Short URLs</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">see more</a>
-                </li>
+                <li><a class="dropdown-item" href="#">See more</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -71,31 +66,28 @@
                 <li><a class="dropdown-item" href="#">Setting</a></li>
                 <li><a class="dropdown-item" href="#">Account</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Notes</a>
-                </li>
+                <li><a class="dropdown-item" href="#">Notes</a></li>
               </ul>
             </li>
-
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Admin</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+
+          <form class="d-flex me-2" role="search">
             <input
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
+
           <form action="/logout" method="GET">
-            <div class="btn">  
-              <button type="submit" class="logoutbtn">Logout</button>
-            </div>
+            <button type="submit" class="btn logout-navbar btn-danger">
+              Logout
+            </button>
           </form>
         </div>
       </div>
@@ -111,28 +103,39 @@
     <!-- History -->
     <div class="historyClicks">
       <% if (locals.urls) { %>
-      <table>
-        <thead>
-          <th>S.No.</th>
-          <th>ShortId</th>
-          <th>Redirect</th>
-          <th>Clicks</th>
-        </thead>
-        <tbody>
-          <% urls.forEach((url, index) => { %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td>
-              <a href="http://localhost:8001/url/<%= url.shortId %>"
-                >http://localhost:8001/url/<%= url.shortId %>
-              </a>
-            </td>
-            <td><%= url.redirectId %></td>
-            <td><%= url.visitHistory.length %></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+      <div class="historyClicks mt-5">
+        <div class="table-responsive shadow-sm">
+          <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>S.No.</th>
+                <th>ShortId</th>
+                <th>Redirect</th>
+                <th>Clicks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% urls.forEach((url, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td>
+                  <a
+                    href="http://localhost:8001/url/<%= url.shortId %>"
+                    class="text-decoration-none"
+                  >
+                    http://localhost:8001/url/<%= url.shortId %>
+                  </a>
+                </td>
+                <td class="text-break"><%= url.redirectId %></td>
+                <td class="fw-bold text-success">
+                  <%= url.visitHistory.length %>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <% } %>
     </div>
 </body>
