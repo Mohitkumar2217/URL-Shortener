@@ -55,3 +55,34 @@ tbody tr td {
   padding: 0px;
   cursor: pointer;
 }
+
+.navbar-brand {
+  letter-spacing: 1px;
+}
+
+.card input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+
+.table-responsive {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.alert a {
+  font-weight: 600;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.table a:hover {
+  text-decoration: underline;
+}

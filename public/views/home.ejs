@@ -13,19 +13,16 @@
     />
   </head>
 
-  <body>
+  <body class="bg-light">
     <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand fw-bold" href="#">Home</a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,9 +50,7 @@
                 <li><a class="dropdown-item" href="#">Clear History</a></li>
                 <li><a class="dropdown-item" href="#">Save Short URLs</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">see more</a>
-                </li>
+                <li><a class="dropdown-item" href="#">See more</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -72,94 +67,111 @@
                 <li><a class="dropdown-item" href="#">Setting</a></li>
                 <li><a class="dropdown-item" href="#">Account</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Notes</a>
-                </li>
+                <li><a class="dropdown-item" href="#">Notes</a></li>
               </ul>
             </li>
-
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Admin</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+
+          <form class="d-flex me-2" role="search">
             <input
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
+
           <form action="/logout" method="GET">
-            <div class="btn">  
-              <button type="submit" class="logoutbtn">Logout</button>
-            </div>
+            <button type="submit" class="btn btn-danger">Logout</button>
           </form>
         </div>
       </div>
     </nav>
+
     <!-- breadcrumb -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    <nav aria-label="breadcrumb" class="mt-3">
+      <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       </ol>
     </nav>
 
-    <!-- <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Link</li>
-      </ol>
-    </nav> -->
+    <div class="container mt-4">
+      <h1 class="text-center text-primary mb-4">URL Shortener</h1>
 
-    <div class="container">
-      <h1>URL Shortener</h1>
-      <% if (locals.id) { %> URL Generate:
-      <a href="https://url-shortener-1-9443.onrender.com/url/<%= id %>">
-        https://url-shortener-1-9443.onrender.com/url/<%= id %></a
-      >
+      <% if (locals.id) { %>
+      <div class="alert alert-success text-center shadow-sm">
+        URL Generated:
+        <a
+          href="https://url-shortener-1-9443.onrender.com/url/<%= id %>"
+          class="text-decoration-none"
+        >
+          https://url-shortener-1-9443.onrender.com/url/<%= id %>
+        </a>
+      </div>
       <% } %>
-      <form method="POST" action="/url">
-        <label for="Original_URL">Enter Your Original URL</label>
-        <input
-          type="text"
-          name="url"
-          id="Original_URL"
-          placeholder="http://example.com"
-        />
-        <button type="submit">Generate</button>
-      </form>
-    </div>
 
-    <div class="historyClicks">
+      <div class="card shadow-lg p-4 mt-3">
+        <form method="POST" action="/url">
+          <label for="Original_URL" class="form-label fw-semibold"
+            >Enter Your Original URL</label
+          >
+          <input
+            type="text"
+            name="url"
+            id="Original_URL"
+            class="form-control mb-3"
+            placeholder="http://example.com"
+            required
+          />
+          <button type="submit" class="btn btn-primary w-100">
+            Generate 🔗
+          </button>
+        </form>
+      </div>
+
       <% if (locals.urls) { %>
-      <table>
-        <thead>
-          <th>S.No.</th>
-          <th>ShortId</th>
-          <th>Redirect</th>
-          <th>Clicks</th>
-        </thead>
-        <tbody>
-          <% urls.forEach((url, index) => { %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td>
-              <a href="https://url-shortener-1-9443.onrender.com/url/<%= url.shortId %>"
-                >https://url-shortener-1-9443.onrender.com/url/<%= url.shortId %>
-              </a>
-            </td>
-            <td><%= url.redirectId %></td>
-            <td><%= url.visitHistory.length %></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+      <div class="historyClicks mt-5">
+        <div class="table-responsive shadow-sm">
+          <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>S.No.</th>
+                <th>ShortId</th>
+                <th>Redirect</th>
+                <th>Clicks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% urls.forEach((url, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td>
+                  <a
+                    href="https://url-shortener-1-9443.onrender.com/url/<%= url.shortId %>"
+                    class="text-decoration-none"
+                  >
+                    https://url-shortener-1-9443.onrender.com/url/<%=
+                    url.shortId %>
+                  </a>
+                </td>
+                <td class="text-break"><%= url.redirectId %></td>
+                <td class="fw-bold text-success">
+                  <%= url.visitHistory.length %>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <% } %>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

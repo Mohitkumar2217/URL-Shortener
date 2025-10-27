@@ -15,7 +15,7 @@ router.get("/",restrictTo(['NORMAL', "ADMIN"]), async (req, res) => {
         urls: allUrls,
     });
 });
-router.get("/shortner", async (req, res) => {
+router.get("/", async (req, res) => {
     return res.render("home");
 });
 
