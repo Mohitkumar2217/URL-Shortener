@@ -9,6 +9,21 @@ body {
 }
 
 
+.navbar .nav-link:hover {
+  color: #ffdd57 !important; /* gold highlight */
+}
+
+.navbar .dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f0f4ff;
+}
+
+
 /* nav bar  */
 /* .navbar {
   display: flex;
