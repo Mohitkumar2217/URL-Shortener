@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // routes middlewares
 app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlPostRoute);
 app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
-app.use("/", userRoute);  // /user
+app.use("/user", userRoute); 
 app.use("/", staticRouter);
 
 app.listen(PORT, () => {
