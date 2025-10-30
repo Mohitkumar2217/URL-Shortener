@@ -28,12 +28,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
 app.use(checkforAuthentication);
-app.use(express.static('public'));
-
+app.use(express.static(path.join(__dirname, "public")));
 // routes middlewares
 app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlPostRoute);
 app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
-app.use("/user", userRoute);
+app.use("/", userRoute);  // /user
 app.use("/", staticRouter);
 
 app.listen(PORT, () => {
