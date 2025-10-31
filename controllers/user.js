@@ -15,7 +15,7 @@ async function handleUserSignUp(req, res) {
     if(password != confirmpass) return res.render("signup", {
         error: "fill password and confirm password same",
     })
-    return res.redirect("/");
+    return res.redirect("/"); // /login
 }
 
 
