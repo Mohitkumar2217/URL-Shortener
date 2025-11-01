@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
+const optionsRouter = require("./routes/options");
 
 const app = express();
 dotenv.config();
@@ -34,6 +35,8 @@ app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlPostRoute);
 app.use("/url",restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/user", userRoute); 
 app.use("/", staticRouter);
+app.use("/", optionsRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
