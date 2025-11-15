@@ -1,49 +1,59 @@
-// const {v4: uuidv4} = require("uuid");
-// now do with token method
-// now header method
+// controllers/user.js
 const User = require("../models/user");
-const {setUser} = require("../services/auth");
+const { setUser } = require("../services/auth");
 
 async function handleUserSignUp(req, res) {
-    const { name, email, password,confirmpass } = req.body;
-    await User.create({
-        name,
-        email,
-        password,
-        confirmpass,
-    });
-    if(password != confirmpass) return res.render("signup", {
-        error: "fill password and confirm password same",
-    })
-    return res.redirect("/"); // /login
+  try {
+    const { name, email, password, confirmpass } = req.body;
+
+    if (!name || !email || !password || !confirmpass) {
+      return res.status(400).render("signup", { error: "All fields are required" });
+    }
+
+    if (password !== confirmpass) {
+      return res.status(400).render("signup", { error: "Passwords do not match" });
+    }
+
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return res.status(400).render("signup", { error: "Email already registered" });
+    }
+
+    await User.create({ name, email, password });
+
+    return res.redirect("/login");
+  } catch (err) {
+    console.error("handleUserSignUp error:", err);
+    return res.status(500).render("signup", { error: "Internal server error" });
+  }
 }
-
-
 
 async function handleUserLogin(req, res) {
+  try {
     const { email, password } = req.body;
-    const user = await User.findOne({
-        email,
-        password,
-    });
-    if(!user) return res.render("login", {
-        error: "Invalid Username or Passwaord"
-    })
-    // // session id creating method 
-    // const sessionId = uuidv4();
-    // setUser(sessionId, user);
-    // res.cookie("uid", sessionId);
+    if (!email || !password) {
+      return res.status(400).render("login", { error: "Email and password required" });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) return res.status(401).render("login", { error: "Invalid email or password" });
+
+    const match = await user.comparePassword(password);
+    if (!match) return res.status(401).render("login", { error: "Invalid email or password" });
 
     const token = setUser(user);
-    
-    // cookies MDN check for multiple argumet
-    res.cookie("token", token);
-    return res.redirect("/");
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 1000 * 60 * 60 * 24,
+    });
 
-    // // headers MDN check
-    // return res.json({ token });
+    return res.redirect("/");
+  } catch (err) {
+    console.error("handleUserLogin error:", err);
+    return res.status(500).render("login", { error: "Internal server error" });
+  }
 }
-module.exports = {
-    handleUserSignUp,
-    handleUserLogin,
-}
+
+module.exports = { handleUserSignUp, handleUserLogin };

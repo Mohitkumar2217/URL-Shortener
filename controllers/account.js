@@ -1,19 +1,15 @@
-const express = require("express");
+// controllers/account.js
 const User = require("../models/user");
-const { isAuthenticated } = require("../middlewares/auth");
 
 async function Handleaccount(req, res) {
   try {
-    // fetch user from DB
-    const userDoc = await User.findById(req.user._id);
+    if (!req.user?._id) return res.redirect("/login");
 
-    if (!userDoc) {
-      return res.redirect("/"); // fallback if user not found
-    }
+    const userDoc = await User.findById(req.user._id).lean();
+    if (!userDoc) return res.redirect("/");
 
-    // Prepare user data for EJS
     const user = {
-      fullName: userDoc.fullName || "",
+      fullName: userDoc.name || "",
       email: userDoc.email || "",
       phone: userDoc.phone || "",
       linkedin: userDoc.linkedin || "",
@@ -27,14 +23,11 @@ async function Handleaccount(req, res) {
       website: userDoc.website || "",
     };
 
-    // Pass user object to EJS
-    res.render("account", { user });
+    return res.render("account", { user });
   } catch (err) {
-    console.error(err);
-    res.redirect("/");
+    console.error("Handleaccount error:", err);
+    return res.status(500).render("error", { error: "Unable to load account" });
   }
 }
 
-module.exports = {
-  Handleaccount,
-};
+module.exports = { Handleaccount };
