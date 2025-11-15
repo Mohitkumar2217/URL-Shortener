@@ -1,63 +1,35 @@
-/* ===== Base Styles ===== */
+/* public/css/signup.css */
+:root {
+  --primary: #1e3a8a;
+  --accent: #ffdd57;
+  --light-bg: #f0f4ff;
+}
+
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
-  color: #333;
+  background: linear-gradient(135deg, var(--light-bg), #d9e4ff);
   margin: 0;
   padding: 0;
 }
 
-
-/* ===== Navbar ===== */
-.navbar {
-  background-color: #1e3a8a !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.navbar .navbar-brand {
-  color: #f0f4ff !important;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.navbar .nav-link {
-  color: #f0f4ff !important;
-  transition: 0.2s;
-}
-
-.navbar .nav-link:hover {
-  color: #ffdd57 !important;
-}
-
-.navbar .dropdown-menu {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.navbar .dropdown-item:hover {
-  background-color: #f0f4ff;
-}
-
-/* ===== Container / Card ===== */
 .container h1 {
   text-align: center;
-  color: #1e3a8a;
+  color: var(--primary);
   margin: 30px 0 20px;
   font-weight: 700;
 }
 
-.signForm {
+.form-card {
   max-width: 450px;
   margin: 20px auto;
   padding: 30px 25px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Form Inputs ===== */
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 10px 12px;
@@ -66,24 +38,21 @@ input[type="password"] {
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 15px;
-  transition: 0.3s;
 }
 
 input:focus {
-  border-color: #1e3a8a;
+  border-color: var(--primary);
   box-shadow: 0 0 8px rgba(30, 58, 138, 0.3);
   outline: none;
 }
 
-/* ===== Labels ===== */
 label {
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--primary);
 }
 
-/* ===== Buttons ===== */
 button {
-  background-color: #1e3a8a;
+  background-color: var(--primary);
   color: #fff;
   font-weight: bold;
   padding: 10px 0;
@@ -93,31 +62,20 @@ button {
   cursor: pointer;
   transition: 0.3s;
 }
-
 button:hover {
-  background-color: #ffdd57;
-  color: #1e3a8a;
+  background-color: var(--accent);
+  color: var(--primary);
+  transform: scale(1.02);
 }
 
-/* ===== Links ===== */
 .loginalready a {
   display: block;
   text-align: center;
   margin-top: 15px;
-  color: #1e3a8a;
+  color: var(--primary);
   text-decoration: none;
-  font-weight: 500;
 }
-
 .loginalready a:hover {
-  color: #ffdd57;
+  color: var(--accent);
   text-decoration: underline;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 576px) {
-  .signForm {
-    margin: 20px 15px;
-    padding: 20px;
-  }
 }

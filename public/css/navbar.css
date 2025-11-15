@@ -1,0 +1,47 @@
+/* ===== Navbar Styling ===== */
+
+.navbar {
+  background-color: #1e3a8a !important;
+  padding: 10px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-brand {
+  color: #ffffff !important;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.navbar .nav-link {
+  color: #ffffff !important;
+  font-size: 1rem;
+  padding: 8px 12px;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+  color: #ffdd57 !important;
+}
+
+/* Dropdown */
+.navbar .dropdown-menu {
+  border-radius: 10px;
+  padding: 10px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.navbar .dropdown-item {
+  padding: 10px 15px;
+  transition: 0.2s;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f0f4ff;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .navbar .navbar-brand {
+    font-size: 1.2rem;
+  }
+}

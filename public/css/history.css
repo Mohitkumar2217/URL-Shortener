@@ -1,80 +1,51 @@
-/* ===== Base Styles ===== */
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
-  color: #333;
-  margin: 0;
-  padding: 0;
+/* ===== History Page Styles ===== */
+
+.history-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
-
-/* ===== Navbar ===== */
-.navbar {
-  background-color: #1e3a8a !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.navbar .navbar-brand {
-  color: #f0f4ff !important;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.navbar .nav-link {
-  color: #f0f4ff !important;
-  transition: 0.2s;
-}
-
-.navbar .nav-link:hover {
-  color: #ffdd57 !important;
-}
-
-.navbar .dropdown-menu {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.navbar .dropdown-item:hover {
-  background-color: #f0f4ff;
-}
-
-.btn-outline-success {
-  border-color: #1e3a8a;
+.history-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #1e3a8a;
+  margin-bottom: 25px;
 }
 
-.btn-outline-success:hover {
-  background-color: #1e3a8a;
-  color: #fff;
+.url-card {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ===== Breadcrumb ===== */
-.breadcrumb {
-  max-width: 950px;
-  margin: 20px auto;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+.url-card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s ease-in-out;
 }
 
-.breadcrumb a {
-  text-decoration: none;
-  color: #1e3a8a;
+.url-text {
+  font-size: 1rem;
   font-weight: 500;
 }
 
-.breadcrumb a:hover {
-  color: #ffdd57;
+.copy-btn {
+  background-color: #1e3a8a;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* ===== History Table ===== */
-/* .historyClicks {
-  max-width: 950px;
-  margin: 20px auto;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20
-} */
+.copy-btn:hover {
+  background-color: #ffdd57;
+  color: #1e3a8a;
+}
