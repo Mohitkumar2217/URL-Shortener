@@ -1,39 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+    <link rel="stylesheet" href="../css/signup.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" onclick="alert('SignUp first!')" href="/signup"
+          >Home</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                onclick="alert('SignUp first!')"
+                aria-current="page"
+                href="/signup"
+                >History</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Option1
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Create file</a></li>
+                <li><a class="dropdown-item" href="#">Save Short URLs</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">See more</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Option2
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Notes</a></li>
+              </ul>
+            </li>
 
-<head>
-  <%- include("partials/head") %>
-  <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/signup.css">
-</head>
-
-<body>
-  <%- include("partials/navbar", { user: null }) %>
-
-  <div class="container">
-    <h1 class="text-center text-light fw-bold">Signup</h1>
-
-    <% if(error){ %>
-      <div class="alert alert-danger"><%= error %></div>
-    <% } %>
-
-    <form class="signForm bg-dark text-light" action="/user" method="post">
-
-      <label>Email</label>
-      <input type="text" name="email" required>
-
-      <label>Password</label>
-      <input type="password" name="password" required>
-
-      <button type="submit">Create Account</button>
-
-      <div class="loginalready">
-        <a href="/user/login">Already have an account? Login</a>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Admin</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </form>
-  </div>
-
-  <script src="/js/signup.js"></script>
-</body>
-
+    </nav>
+    <div class="container">
+      <h1>SignUp</h1>
+    </div>
+    <div class="signForm">
+      <form action="/" method="get">
+        <div class="namecontainer">
+          <label for="">Name:</label>
+          <input type="text" required name="name" id="fullName" />
+        </div>
+        <div class="emailcontainer">
+          <label for="">Email:</label>
+          <input type="text" required name="email" id="fullEmail" />
+        </div>
+        <div class="passwordcontainer">
+          <label for="">Password:</label>
+          <input type="password" required name="password" id="fullPassword" />
+        </div>
+        <div class="confirmpasscontainer">
+          <label for="">Confirm Password:</label>
+          <input
+            type="password"
+            required
+            name="confirmpass"
+            id="fullcPassword"
+          />
+        </div>
+        <div class="signupbutton">
+          <button type="submit">SignUp</button>
+        </div>
+      </form>
+      <div class="loginalready">
+        <a href="http://localhost:8001/login">login</a>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
+<!-- http://localhost:8001
+ https://url-shortener-1-9443.onrender.com -->

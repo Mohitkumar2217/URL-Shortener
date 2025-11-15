@@ -1,24 +1,19 @@
-// middlewares/freeLimits.js
-const FREE_LIMIT = Number(process.env.FREE_LIMIT) || 5;
-
 function freeLimit(req, res, next) {
   // Allow unlimited if logged in
   if (req.user) return next();
 
-  if (!req.session) {
-    console.warn("Session not initialized for freeLimit");
-    return res.status(500).send("Session not initialized");
+  // Initialize counter
+  if (!req.session.freeCount) req.session.freeCount = 0;
+
+  // Stop if limit reached
+  if (req.session.freeCount >= 5) {
+    return res.redirect("/user/login");
   }
 
-  if (typeof req.session.freeCount !== "number") req.session.freeCount = 0;
-
-  if (req.session.freeCount >= FREE_LIMIT) {
-    // For web redirect to login; for API you might return 403
-    return res.redirect("/login");
-  }
-
+  // Increment + track remaining
   req.session.freeCount++;
-  req.session.remaining = FREE_LIMIT - req.session.freeCount;
+  req.session.remaining = 5 - req.session.freeCount;
+
   next();
 }
 

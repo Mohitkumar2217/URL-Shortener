@@ -1,56 +1,123 @@
+/* ===== Base Styles ===== */
 body {
-  background: #0f172a;
   font-family: "Poppins", sans-serif;
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: #1e3a8a !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-brand {
+  color: #f0f4ff !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link {
+  color: #f0f4ff !important;
+  transition: 0.2s;
+}
+
+.navbar .nav-link:hover {
+  color: #ffdd57 !important;
+}
+
+.navbar .dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f0f4ff;
+}
+
+/* ===== Container / Card ===== */
 .container h1 {
-  color: #e2e8f0;
+  text-align: center;
+  color: #1e3a8a;
+  margin: 30px 0 20px;
+  font-weight: 700;
 }
 
 .signForm {
-  background: #1e293b;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 30px 25px;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-label {
-  color: #e2e8f0;
-}
-
-input {
-  background: #0f172a;
-  border: 1px solid #475569;
+/* ===== Form Inputs ===== */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
   border-radius: 8px;
-  padding: 10px;
-  color: #e2e8f0;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
 input:focus {
-  border-color: #60a5fa;
+  border-color: #1e3a8a;
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.3);
   outline: none;
-  box-shadow: 0 0 8px #1d4ed8;
 }
 
+/* ===== Labels ===== */
+label {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* ===== Buttons ===== */
 button {
-  background: #1d4ed8;
-  color: #e2e8f0;
-  padding: 10px;
+  background-color: #1e3a8a;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 0;
+  width: 100%;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #60a5fa;
-  color: #0f172a;
+  background-color: #ffdd57;
+  color: #1e3a8a;
 }
 
+/* ===== Links ===== */
 .loginalready a {
-  color: #60a5fa;
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .loginalready a:hover {
-  color: #93c5fd;
+  color: #ffdd57;
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+  .signForm {
+    margin: 20px 15px;
+    padding: 20px;
+  }
 }

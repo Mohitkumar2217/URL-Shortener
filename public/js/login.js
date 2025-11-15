@@ -1,10 +1,8 @@
-// Prevent double form submission
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".loginForm");
+const loginForm = document.getElementById("logout-navbar");
 
-  if (!form) return;
+loginForm.addEventListener("click", (event) => {
+  event.preventDefault();
+  loginForm.reset();
+})
 
-  form.addEventListener("submit", () => {
-    form.querySelector("button").disabled = true;
-  });
-});
+

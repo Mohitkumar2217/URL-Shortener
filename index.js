@@ -1,4 +1,3 @@
-// index.js
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -6,35 +5,35 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
+const optionsRouter = require("./routes/options");
 
-dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8001;
+dotenv.config();
 
-// middlewares
+const PORT = process.env.PORT;
+// middle ware
 const { checkforAuthentication, restrictTo } = require("./middlewares/auth");
-
 // routes
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
-const optionsRouter = require("./routes/options");
 
-// connect to DB (connect.js already logs & exits on failure)
-connectToMongoDB(process.env.MONGO_URI);
+connectToMongoDB(process.env.MONGO_URI)
+    .then(() => console.log("✅ Connected to MongoDB Atlas"))
+    .catch(err => console.error("❌ MongoDB connection error:", err));
 
-// view engine
+
 app.set("view engine", "ejs");
 app.set("trust proxy", 1);
-app.set("views", path.resolve("./public/views"));
+app.set('views', path.resolve('./public/views'));
 
-// middlewares (order matters)
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// session must be before auth middleware that uses req.session
+app.use(checkforAuthentication);
+app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: process.env.SECRET || "mysecretkey",
@@ -45,38 +44,25 @@ app.use(
       collectionName: "sessions",
     }),
     cookie: {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      secure: process.env.NODE_ENV === "production", // only over HTTPS in prod
+      httpOnly: true,        // prevents client-side JS access
+      maxAge: 1000 * 60 * 60 * 24,  // 1 day
+      sameSite: "none",      // important for cross-site requests
+      secure: true           // must be true on Render (HTTPS)
     },
   })
 );
 
-// auth middleware (reads JWT token from cookie)
-app.use(checkforAuthentication);
-
-// static files
-app.use(express.static(path.join(__dirname, "public")));
-
-// routes
-app.use("/url", restrictTo(["NORMAL", "ADMIN"]), urlPostRoute); // POST /url
-app.use("/url", urlGetRoute); // GET /url/:shortId and /url/analytic/:shortId
+// routes middlewares
+app.use("/url", restrictTo(['NORMAL', "ADMIN"]), urlPostRoute);
+app.use("/url", restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/user", userRoute);
 app.use("/", staticRouter);
 app.use("/", optionsRouter);
-
-// home route
 app.get("/", (req, res) => {
-  res.render("home", { user: req.user });
+   return res.render("home");
 });
 
-// error handling
-app.use((err, req, res, next) => {
-  console.error("Unhandled error:", err);
-  res.status(500).render("error", { error: "Internal Server Error" });
-});
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+    console.log(`Server running on http://localhost:${PORT}`);
+})

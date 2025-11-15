@@ -1,47 +1,39 @@
-// routes/static.js
-const express = require("express");
-const URL = require("../models/url");
-const { restrictTo, checkforAuthentication } = require("../middlewares/auth");
+const express = require('express');
+const URL = require('../models/url');
 const router = express.Router();
+const {restrictTo} = require("../middlewares/auth");
 
-router.get("/admin/urls", checkforAuthentication, restrictTo(["ADMIN"]), async (req, res) => {
-  try {
+router.get("/admin/urls",restrictTo(['ADMIN']), async (req, res) => {
     const allUrls = await URL.find({});
-    return res.render("admin-urls", { urls: allUrls, user: req.user });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).render("error", { error: "Server Error" });
-  }
+    return res.render("home", {
+        urls: allUrls,
+    });
 });
-
-router.get("/history", checkforAuthentication, restrictTo(["NORMAL", "ADMIN"]), async (req, res) => {
-  try {
+router.get("/history",restrictTo(['NORMAL', "ADMIN"]), async (req, res) => {
     const allUrls = await URL.find({ createdBy: req.user._id });
-    return res.render("history", { urls: allUrls, user: req.user });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).render("error", { error: "Server Error" });
-  }
+    return res.render("history", {
+        urls: allUrls,
+    });
+});
+router.get("/", async (req, res) => {
+    return res.render("home");
 });
 
-router.get("/", (req, res) => {
-  return res.render("home", { user: req.user });
-});
+router.get("/signup", async (req, res) => {
+    return res.render("signup");
+})
 
-router.get("/signup", (req, res) => {
-  if (req.user) return res.redirect("/");
-  return res.render("signup");
-});
+router.get("/login", async (req, res) => {
+    return res.render("login");
+})
+router.get("/history", async (req, res) => {
+    return res.render("history");
+})
 
-router.get("/login", (req, res) => {
-  if (req.user) return res.redirect("/");
-  return res.render("login");
-});
-
-router.get("/logout", checkforAuthentication, (req, res) => {
-  res.clearCookie("token");
-  if (req.session) req.session.destroy(() => {});
-  return res.redirect("/login");
-});
+// Server-side route (optional, for token blacklist)
+router.get('/logout', async (req, res) => {
+  res.clearCookie('token'); // token delete to logout
+  return res.redirect('/login');
+})
 
 module.exports = router;
