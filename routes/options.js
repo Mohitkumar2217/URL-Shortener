@@ -1,28 +1,29 @@
 // routes/options.js
 const express = require("express");
 const { Handleaccount } = require("../controllers/account");
+const { checkforAuthentication } = require("../middlewares/auth");
 const router = express.Router();
 
-router.get("/create-file", (req, res) => {
-    res.send("CreateFilePage"); // replace with your EJS render
+router.get("/create-file", checkforAuthentication, (req, res) => {
+  return res.render("create-file", { user: req.user });
 });
 
-router.get("/save-urls", (req, res) => {
-    res.send("Save Short URLs Page");
+router.get("/save-urls", checkforAuthentication, (req, res) => {
+  return res.render("save-urls", { user: req.user });
 });
 
-router.get("/see-more", (req, res) => {
-    res.send("See More Page");
+router.get("/see-more", checkforAuthentication, (req, res) => {
+  return res.render("see-more", { user: req.user });
 });
 
-router.get("/setting", (req, res) => {
-    res.send("Setting Page");
+router.get("/setting", checkforAuthentication, (req, res) => {
+  return res.render("setting", { user: req.user });
 });
 
-router.get("/account", Handleaccount);
+router.get("/account", checkforAuthentication, Handleaccount);
 
-router.get("/notes", (req, res) => {
-    res.send("Notes Page");
+router.get("/notes", checkforAuthentication, (req, res) => {
+  return res.render("notes", { user: req.user });
 });
 
 module.exports = router;
