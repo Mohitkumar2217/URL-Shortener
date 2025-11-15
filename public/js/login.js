@@ -1,13 +1,10 @@
-const form = document.getElementById("login-form");
+// Prevent double form submission
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".loginForm");
 
-if (form) {
-  form.addEventListener("submit", (e) => {
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
+  if (!form) return;
 
-    if (!email.value.trim() || !password.value.trim()) {
-      e.preventDefault();
-      alert("Please fill all fields.");
-    }
+  form.addEventListener("submit", () => {
+    form.querySelector("button").disabled = true;
   });
-}
+});

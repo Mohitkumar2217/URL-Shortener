@@ -1,51 +1,36 @@
-/* ===== History Page Styles ===== */
-
-.history-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+body {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: "Poppins", sans-serif;
 }
 
-.history-title {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 25px;
+.container h2 {
+  color: #e2e8f0;
 }
 
-.url-card {
-  background: white;
-  padding: 15px 20px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.table-responsive {
+  background: #1e293b;
+  border-radius: 10px;
 }
 
-.url-card:hover {
-  transform: translateY(-3px);
-  transition: 0.2s ease-in-out;
+.table-dark {
+  background-color: #1e293b !important;
 }
 
-.url-text {
-  font-size: 1rem;
-  font-weight: 500;
+.table-dark thead {
+  background-color: #334155;
 }
 
-.copy-btn {
-  background-color: #1e3a8a;
-  color: #fff;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
+.table-dark td,
+.table-dark th {
+  color: #e2e8f0 !important;
 }
 
-.copy-btn:hover {
-  background-color: #ffdd57;
-  color: #1e3a8a;
+.table-dark a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.table-dark a:hover {
+  text-decoration: underline;
 }

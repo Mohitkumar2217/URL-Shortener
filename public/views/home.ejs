@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <%- include("partials/head") %>
-  <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/home.css">
-</head>
+<%- include("partials/head", { title: "Home - ShortURL", pageCss: "home.css" }) %>
 
 <body>
-  <%- include("partials/navbar", { user: user }) %>
 
-  <div class="container mt-5">
-    <h2 class="text-center text-light fw-bold mb-4">Shorten Your URL</h2>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/">ShortURL</a>
+        </div>
 
-    <form action="/" method="post" class="card p-4 bg-dark text-light shadow-lg rounded">
-      <label class="form-label fw-semibold">Enter URL:</label>
-      <input type="text" class="form-control mb-3" name="url" required>
+        <div class="nav-right">
+            <button id="themeToggle" class="toggle-btn">🌙</button>
 
-      <button class="btn btn-primary w-100 fw-bold">Generate Short URL</button>
-    </form>
+            <% if (user) { %>
+                <a href="/history">History</a>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+            <% } %>
+        </div>
+    </nav>
 
-    <% if(shortUrl){ %>
-      <div class="alert alert-info text-center mt-4">
-        Short URL:  
-        <a href="<%= shortUrl %>" target="_blank" class="text-primary fw-semibold">
-          <%= shortUrl %>
-        </a>
-      </div>
-    <% } %>
+    <main class="home-container">
 
-  </div>
+        <h1 class="title">Shorten Your URL</h1>
+
+        <form action="/posturl" method="POST" class="url-form">
+            <input type="text" name="longUrl" placeholder="Enter long URL..." required />
+            <button type="submit">Shorten</button>
+        </form>
+
+        <% if (shortUrl) { %>
+            <div class="result-box">
+                <p>Your short URL:</p>
+                <a href="<%= shortUrl %>" target="_blank"><%= shortUrl %></a>
+            </div>
+        <% } %>
+
+    </main>
+
 </body>
-
 </html>
