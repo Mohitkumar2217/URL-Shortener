@@ -1,3 +1,5 @@
+//controllers/user.js
+
 // const {v4: uuidv4} = require("uuid");
 // now do with token method
 // now header method

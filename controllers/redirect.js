@@ -1,3 +1,5 @@
+//controllers/redirect.js
+
 const URL = require("../models/url");
 
 async function handleShortLink(req, res) {

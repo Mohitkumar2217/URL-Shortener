@@ -1,3 +1,5 @@
+//controllers/account.js
+
 const express = require("express");
 const User = require("../models/user");
 const { isAuthenticated } = require("../middlewares/auth");
