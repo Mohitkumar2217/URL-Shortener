@@ -19,9 +19,7 @@ const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
 
-connectToMongoDB(process.env.MONGO_URI)
-    .then(() => console.log("✅ Connected to MongoDB Atlas"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+connectToMongoDB(process.env.MONGO_URI);
 
 
 app.set("view engine", "ejs");
