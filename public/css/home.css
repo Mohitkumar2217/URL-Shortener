@@ -119,23 +119,3 @@ tbody tr td {
 .table a:hover {
   text-decoration: underline;
 }
-
-/* ===== Breadcrumb ===== */
-.breadcrumb {
-  max-width: 950px;
-  margin: 20px auto;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.breadcrumb a {
-  text-decoration: none;
-  color: #1e3a8a;
-  font-weight: 500;
-}
-
-.breadcrumb a:hover {
-  color: #ffdd57;
-}

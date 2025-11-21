@@ -50,13 +50,10 @@ status : Done
 status : not started
 
 // adding more features
-status : working 
+status : not started 
 
 // dividiing block 
 status : not started
 
 // clear history adding
-status : Done
-
-// Admin portal
 status : not started
