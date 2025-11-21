@@ -3,9 +3,9 @@ mongoose.set("strictQuery", true);
 const connectToMongoDB = async (url) => {
   try {
     await mongoose.connect(url);
-    console.log('✅ Connected to MongoDB');
+    console.error("✅ Connected to MongoDB Atlas");
   } catch (err) {
-    console.error('MongoDB connection error:', err);
+    console.error("❌ MongoDB connection error:", err);
   }
 };
 

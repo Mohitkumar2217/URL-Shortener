@@ -1,46 +1,44 @@
-//middlewares/auth.js
-
+// middlewares/auth.js
 const { getUser } = require("../services/auth");
 
-// #### For cookies use only
-// authentication
 async function checkforAuthentication(req, res, next) {
     try {
         req.user = null;
+        let token = req.cookies?.token;
 
-        // 1) prefer cookie token (controllers set cookie name "token")
-        let tokenSource = req.cookies?.token;
-
-        // 2) fallback to Authorization header (Bearer <token>)
-        if (!tokenSource && req.headers?.authorization) {
-            const auth = req.headers.authorization;
-            if (typeof auth === "string" && auth.startsWith("Bearer ")) {
-                tokenSource = auth.split(" ")[1];
+        // fallback to Authorization: Bearer <token>
+        const authHeader = req.headers?.authorization;
+        if (!token && typeof authHeader === "string") {
+            const parts = authHeader.split(" ");
+            if (parts.length === 2 && parts[0].toLowerCase() === "bearer") {
+                token = parts[1];
             }
         }
 
-        if (!tokenSource) return next();
-
-        // Support getUser being sync or async
-        const user = await Promise.resolve(getUser(tokenSource));
-        if (user) req.user = user;
+        if (token) {
+            // support getUser being sync or async
+            const user = await Promise.resolve(getUser(token));
+            if (user) req.user = user;
+        }
         return next();
     } catch (err) {
         console.error("auth.checkforAuthentication error:", err);
-        // don't block request on auth errors — treat as unauthenticated
         req.user = null;
         return next();
     }
 }
 
-// authorization
+// authorization factory (not async)
 function restrictTo(roles) {
-    // normalize roles to array
     const allowed = Array.isArray(roles) ? roles : [roles];
     return (req, res, next) => {
-        if (!req.user) return res.redirect("/login");
+        if (!req.user) {
+            // not authenticated
+            return res.redirect("/login"); // or: return res.status(401).send("Authentication required")
+        }
         if (!allowed.includes(req.user.role)) {
-            return res.status(403).send("Unauthorized");
+            // authenticated but not allowed
+            return res.status(403).send("Forbidden");
         }
         return next();
     };
@@ -48,5 +46,5 @@ function restrictTo(roles) {
 
 module.exports = {
     checkforAuthentication,
-    restrictTo,
+    restrictTo
 }

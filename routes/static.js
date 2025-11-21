@@ -38,8 +38,13 @@ router.get(
 );
 
 // Public pages
-router.get("/", async (req, res) => {
-    return res.render("home");
+router.get("/", checkforAuthentication, async (req, res) => {
+    // if user logged in, you can show history and account info
+    // if not, leave history empty and show login/signup buttons
+    res.render("home", {
+        user: req.user || null,
+        urls: req.user ? await URL.find({ createdBy: req.user._id }) : [],
+    });
 });
 
 router.get("/signup", async (req, res) => {
