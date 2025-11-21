@@ -4,6 +4,9 @@ const { getUser } = require("../services/auth");
 async function checkforAuthentication(req, res, next) {
     try {
         req.user = null;
+        console.log("auth: cookies:", req.cookies);
+        console.log("auth: session:", req.session);
+
         let token = req.cookies?.token;
 
         // fallback to Authorization: Bearer <token>
@@ -46,5 +49,5 @@ function restrictTo(roles) {
 
 module.exports = {
     checkforAuthentication,
-    restrictTo
-}
+    restrictTo,
+};

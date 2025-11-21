@@ -1,7 +1,7 @@
 //routes/static.js
 
 const express = require('express');
-const URL = require('../models/url');
+const UrlModel = require('../models/url'); // avoid shadowing global URL
 const router = express.Router();
 const { checkforAuthentication, restrictTo } = require("../middlewares/auth");
 
@@ -12,11 +12,11 @@ router.get(
     restrictTo(['ADMIN']),
     async (req, res) => {
         try {
-            const allUrls = await URL.find({}).limit(100); // add sensible limit/pagination
-            return res.render("home", { urls: allUrls });
+            const allUrls = await UrlModel.find({}).limit(100);
+            return res.render("home", { urls: allUrls, user: req.user || null });
         } catch (err) {
             console.error("GET /admin/urls error:", err);
-            return res.status(500).render("home", { error: "Server error" });
+            return res.status(500).render("home", { error: "Server error", user: req.user || null });
         }
     }
 );
@@ -28,23 +28,30 @@ router.get(
     restrictTo(['NORMAL', "ADMIN"]),
     async (req, res) => {
         try {
-            const allUrls = await URL.find({ createdBy: req.user._id }).limit(100);
-            return res.render("history", { urls: allUrls });
+            const allUrls = await UrlModel.find({ createdBy: req.user._id }).limit(100);
+            return res.render("history", { urls: allUrls, user: req.user || null });
         } catch (err) {
             console.error("GET /history error:", err);
-            return res.status(500).render("history", { error: "Server error" });
+            return res.status(500).render("history", { error: "Server error", user: req.user || null });
         }
     }
 );
 
-// Public pages
+// Public home
 router.get("/", checkforAuthentication, async (req, res) => {
-    // if user logged in, you can show history and account info
-    // if not, leave history empty and show login/signup buttons
-    res.render("home", {
-        user: req.user || null,
-        urls: req.user ? await URL.find({ createdBy: req.user._id }) : [],
-    });
+    try {
+        let urls = [];
+        if (req.user) {
+            urls = await UrlModel.find({ createdBy: req.user._id }).limit(50);
+        }
+        return res.render("home", {
+            user: req.user || null,
+            urls,
+        });
+    } catch (err) {
+        console.error("GET / error:", err);
+        return res.status(500).render("home", { error: "Server error", user: req.user || null, urls: [] });
+    }
 });
 
 router.get("/signup", async (req, res) => {
@@ -55,10 +62,16 @@ router.get("/login", async (req, res) => {
     return res.render("login");
 });
 
-// Server-side route (optional, for token blacklist)
 router.get('/logout', async (req, res) => {
-    res.clearCookie('token'); // token delete to logout
-    return res.redirect('/login');
+    if (req.session) {
+        req.session.destroy(() => {
+            res.clearCookie('connect.sid');
+            return res.redirect('/login');
+        });
+    } else {
+        res.clearCookie('token');
+        return res.redirect('/login');
+    }
 });
 
 module.exports = router;

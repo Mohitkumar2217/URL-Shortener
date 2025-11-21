@@ -5,8 +5,8 @@ const { setUser } = require("../services/auth");
 
 const COOKIE_OPTS = {
     httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.SECRET,
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production",
 };
 
 async function handleUserSignUp(req, res) {
@@ -27,13 +27,23 @@ async function handleUserSignUp(req, res) {
         }
 
         const hash = await bcrypt.hash(password, 10);
-        await User.create({
+        const created = await User.create({
             name,
             email,
-            password: hash, // store hashed password only
+            password: hash,
         });
 
-        return res.redirect("/"); // or /login
+        // Prefer session-based login if your app uses express-session:
+        if (req.session) {
+            req.session.userId = created._id;
+            req.session.role = created.role || "NORMAL";
+        } else if (typeof setUser === "function") {
+            // fallback to token-style setUser if your service provides it
+            const token = setUser(created);
+            res.cookie("token", token, COOKIE_OPTS);
+        }
+
+        return res.redirect("/");
     } catch (err) {
         console.error("Signup error:", err);
         return res.status(500).render("signup", { error: "Server error" });
@@ -57,9 +67,19 @@ async function handleUserLogin(req, res) {
             return res.render("login", { error: "Invalid email or password" });
         }
 
-        // setUser: confirm signature in services/auth.js — here we assume it returns a token when passed the user
-        const token = setUser(user);
-        res.cookie("token", token, COOKIE_OPTS);
+        if (req.session) {
+            req.session.userId = user._id;
+            req.session.role = user.role || "NORMAL";
+            // ensure session is persisted before redirecting
+            return req.session.save(err => {
+                if (err) console.error("session save error:", err);
+                return res.redirect("/");
+            });
+        } else if (typeof setUser === "function") {
+            const token = setUser(user);
+            res.cookie("token", token, COOKIE_OPTS);
+        }
+
         return res.redirect("/");
     } catch (err) {
         console.error("Login error:", err);
@@ -71,4 +91,3 @@ module.exports = {
     handleUserSignUp,
     handleUserLogin,
 }
-// ...existing code...
