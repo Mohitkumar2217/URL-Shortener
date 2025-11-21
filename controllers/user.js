@@ -5,8 +5,8 @@ const { setUser } = require("../services/auth");
 
 const COOKIE_OPTS = {
     httpOnly: true,
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.SECRET? "none" : "lax",
+    secure: process.env.SECRET,
 };
 
 async function handleUserSignUp(req, res) {

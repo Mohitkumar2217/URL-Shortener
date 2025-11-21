@@ -1,27 +1,16 @@
 // middlewares/auth.js
 const { getUser } = require("../services/auth");
+const User = require("../models/user");
 
 async function checkforAuthentication(req, res, next) {
     try {
         req.user = null;
-        console.log("auth: cookies:", req.cookies);
-        console.log("auth: session:", req.session);
-
-        let token = req.cookies?.token;
-
-        // fallback to Authorization: Bearer <token>
-        const authHeader = req.headers?.authorization;
-        if (!token && typeof authHeader === "string") {
-            const parts = authHeader.split(" ");
-            if (parts.length === 2 && parts[0].toLowerCase() === "bearer") {
-                token = parts[1];
+        // session-based auth: prefer session userId
+        if (req.session && req.session.userId) {
+            const user = await User.findById(req.session.userId).select("-password").lean();
+            if (user) {
+                req.user = user;
             }
-        }
-
-        if (token) {
-            // support getUser being sync or async
-            const user = await Promise.resolve(getUser(token));
-            if (user) req.user = user;
         }
         return next();
     } catch (err) {
