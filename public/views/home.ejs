@@ -47,12 +47,8 @@
                 Option1
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="/create-file">Create file</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/save-urls">Save Short URLs</a>
-                </li>
+                <li><a class="dropdown-item" href="/create-file">Create file</a></li>
+                <li><a class="dropdown-item" href="/save-urls">Save Short URLs</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/see-more">See more</a></li>
               </ul>
@@ -89,19 +85,11 @@
             <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
 
-          <!-- Navbar buttons (Login/Logout) -->
-          <div class="d-flex">
-            <% if (locals.user) { %>
-            <!-- User is logged in -->
-            <form action="/logout" method="GET" class="me-2">
-              <button type="submit" class="btn btn-danger">Logout</button>
-            </form>
-            <% } else { %>
-            <!-- User is not logged in -->
-            <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-            <a href="/signup" class="btn btn-primary">Sign Up</a>
-            <% } %>
-          </div>
+          <form action="/logout" method="GET">
+            <button type="submit" class="btn logout-navbar btn-danger">
+              Logout
+            </button>
+          </form>
         </div>
       </div>
     </nav>
@@ -121,10 +109,10 @@
       <div class="alert alert-success text-center shadow-sm">
         URL Generated:
         <a
-          href="http://localhost:4000/url/<%= id %>"
+          href="http://localhost:8001/url/<%= id %>"
           class="text-decoration-none"
         >
-          http://localhost:4000/url/<%= id %>
+          http://localhost:8001/url/<%= id %>
         </a>
       </div>
       <% } %>

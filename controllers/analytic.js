@@ -1,5 +1,3 @@
-//controllers/analytic.js
-
 const URL = require("../models/url");
 
 async function handleAnalyticLink(req, res) {

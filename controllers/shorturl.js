@@ -1,5 +1,3 @@
-//controllers/shorturl.js
-
 const { nanoid } = require("nanoid");
 const URL = require("../models/url");
 
