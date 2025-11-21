@@ -16,9 +16,7 @@ const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
 const userRoute = require("./routes/user");
  
-connectToMongoDB(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/urlshortener").then(() => {
-    console.log("MongoDB is connected");
-});
+connectToMongoDB(process.env.MONGO_URI);
 
 app.set("view engine", "ejs");
 app.set('views', path.resolve('./public/views'));
