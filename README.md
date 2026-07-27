@@ -117,13 +117,7 @@ URL-Shortener/
 ## 🤝 Contributing
 
 Pull requests are welcome! If you find a bug or have a feature request, feel free to open an issue.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
+ 
 ---
 
 ## 🙌 Acknowledgments
