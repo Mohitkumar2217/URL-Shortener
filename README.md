@@ -378,6 +378,7 @@ flowchart LR
 
 ## 🤝 Contributing
 
+<<<<<<< HEAD
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
 
 ```bash
@@ -385,6 +386,15 @@ git checkout -b feature/your-feature
 # make your changes
 git commit -m "feat: describe your change"
 git push origin feature/your-feature
+=======
+Pull requests are welcome! If you find a bug or have a feature request, feel free to open an issue.
+ 
+---
+
+## 🙌 Acknowledgments
+
+Built with ❤️ by [Mohit Kumar](https://github.com/Mohitkumar2217)
+>>>>>>> 8aa530f062e0d78de8b5ef57de5cb8d970b56891
 ```
 
 --- 
