@@ -5,17 +5,25 @@ const User = require("../models/user");
 const {setUser} = require("../services/auth");
 
 async function handleUserSignUp(req, res) {
-    const { name, email, password,confirmpass } = req.body;
-    await User.create({
-        name,
-        email,
-        password,
-        confirmpass,
-    });
-    if(password != confirmpass) return res.render("signup", {
-        error: "fill password and confirm password same",
-    })
-    return res.redirect("/"); // /login
+    const { name, email, password, confirmpass } = req.body;
+    if (password !== confirmpass) {
+        return res.render("signup", {
+            error: "Password and confirm password must match",
+        });
+    }
+    try {
+        await User.create({ name, email, password, confirmpass });
+        return res.redirect("/login");
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.render("signup", { error: "An account with this email already exists." });
+        }
+        if (err.name === "MongooseError" || err.name === "MongoServerError" || err.message?.includes("buffering timed out")) {
+            return res.render("signup", { error: "Database connection failed. Check that MongoDB is running and MONGO_URI is set in .env." });
+        }
+        console.error("Signup error:", err);
+        return res.render("signup", { error: "Something went wrong. Please try again." });
+    }
 }
 
 

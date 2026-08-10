@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>Help Center</h1>
+          <p>Everything you need to get started with LinkSnap.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="glass-card h-100">
+              <h5 class="fw-bold">Getting Started</h5>
+              <ol class="text-muted small ps-3">
+                <li class="mb-2">Create a free account or log in.</li>
+                <li class="mb-2">Paste your long URL on the Dashboard.</li>
+                <li class="mb-2">Click "Shorten URL" to generate a short link.</li>
+                <li class="mb-2">Copy and share your new link anywhere.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="glass-card h-100">
+              <h5 class="fw-bold">Features</h5>
+              <ul class="text-muted small ps-3">
+                <li class="mb-2"><strong>History</strong> — View all your shortened links.</li>
+                <li class="mb-2"><strong>Analytics</strong> — Track click counts per link.</li>
+                <li class="mb-2"><strong>Export</strong> — Download your links as a file.</li>
+                <li class="mb-2"><strong>Search</strong> — Find links quickly from the navbar.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="glass-card">
+              <h5 class="fw-bold">Need More Help?</h5>
+              <p class="text-muted mb-2">Check our <a href="/faq">FAQ page</a> for common questions, or visit your <a href="/account">Profile</a> to manage account settings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+  </body>
+</html>

@@ -10,12 +10,16 @@ async function handleLoadLink(req, res) {
         redirectId: body.url,
         visitHistory: [],
         createdBy: req.user._id,
-    })
-    return res.status(201).render("home", { 
-        id: shortID, 
+    });
+    const allUrls = await URL.find({ createdBy: req.user._id }).sort({ createdAt: -1 });
+    return res.status(201).render("home", {
+        id: shortID,
+        urls: allUrls,
+        currentPage: 'home',
+        pageTitle: 'Dashboard',
+        breadcrumbs: [{ label: 'Dashboard', active: true }],
     });
 }
-
 
 module.exports = {
     handleLoadLink,

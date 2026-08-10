@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>Export URLs</h1>
+          <p>Download all your shortened links as a text file.</p>
+        </div>
+
+        <div class="glass-card mb-4">
+          <% if (locals.urls && urls.length) { %>
+          <p class="text-muted mb-3">You have <strong><%= urls.length %></strong> link(s) ready to export.</p>
+          <button id="exportBtn" class="btn btn-primary-custom" style="width: auto; padding: 0.6rem 1.5rem;">
+            Download links.txt
+          </button>
+          <textarea id="exportData" class="d-none"><% urls.forEach(function(url) { %><%= baseUrl %>/url/<%= url.shortId %> -> <%= url.redirectId %>
+<% }) %></textarea>
+          <% } else { %>
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <h5>Nothing to export</h5>
+            <p>Create some links first, then come back to export them.</p>
+          </div>
+          <% } %>
+        </div>
+
+        <% if (locals.urls && urls.length) { %>
+        <h5 class="fw-bold mb-3">Preview</h5>
+        <div class="glass-card">
+          <pre class="mb-0 small text-muted" style="white-space: pre-wrap; word-break: break-all;"><% urls.forEach(function(url) { %><%= baseUrl %>/url/<%= url.shortId %> -> <%= url.redirectId %>
+<% }) %></pre>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+    <script>
+      document.getElementById("exportBtn")?.addEventListener("click", () => {
+        const data = document.getElementById("exportData").value;
+        const blob = new Blob([data], { type: "text/plain" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "linksnap-urls.txt";
+        a.click();
+      });
+    </script>
+  </body>
+</html>

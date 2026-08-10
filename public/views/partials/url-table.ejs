@@ -1,0 +1,40 @@
+<% if (locals.urls && urls.length) { %>
+<div class="table-wrapper">
+  <table class="table table-custom table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Short Link</th>
+        <th>Original URL</th>
+        <th>Clicks</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% urls.forEach(function(url, index) { %>
+      <tr class="searchable-row">
+        <td><%= index + 1 %></td>
+        <td>
+          <div class="short-link-row">
+            <a href="<%= baseUrl %>/url/<%= url.shortId %>" target="_blank" class="url-cell">
+              <%= baseUrl %>/url/<%= url.shortId %>
+            </a>
+            <button class="btn-copy" data-url="<%= baseUrl %>/url/<%= url.shortId %>" type="button">Copy</button>
+          </div>
+        </td>
+        <td class="url-cell" title="<%= url.redirectId %>"><%= url.redirectId %></td>
+        <td><span class="click-badge"><%= url.visitHistory.length %></span></td>
+        <td><%= new Date(url.createdAt).toLocaleDateString() %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } else { %>
+<div class="empty-state glass-card">
+  <div class="empty-state-icon">📭</div>
+  <h5>No links yet</h5>
+  <p>Shorten your first URL from the dashboard to see it here.</p>
+  <a href="/" class="btn btn-primary-custom mt-3 d-inline-block" style="width: auto; padding: 0.6rem 1.5rem;">Create a Link</a>
+</div>
+<% } %>

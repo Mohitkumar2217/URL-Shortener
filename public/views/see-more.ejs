@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>Analytics Overview</h1>
+          <p>Track performance across all your shortened links.</p>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-sm-4">
+            <div class="stat-card">
+              <div class="stat-value"><%= totalLinks %></div>
+              <div class="stat-label">Total Links</div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="stat-card">
+              <div class="stat-value"><%= totalClicks %></div>
+              <div class="stat-label">Total Clicks</div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="stat-card">
+              <div class="stat-value"><%= totalLinks ? Math.round(totalClicks / totalLinks) : 0 %></div>
+              <div class="stat-label">Avg Clicks / Link</div>
+            </div>
+          </div>
+        </div>
+
+        <% if (topLink) { %>
+        <div class="glass-card mb-4">
+          <h5 class="fw-bold mb-2">Top Performing Link</h5>
+          <div class="short-link-row">
+            <a href="<%= baseUrl %>/url/<%= topLink.shortId %>" target="_blank">
+              <%= baseUrl %>/url/<%= topLink.shortId %>
+            </a>
+            <span class="click-badge"><%= topLink.visitHistory.length %> clicks</span>
+          </div>
+          <p class="text-muted small mt-2 mb-0 url-cell" title="<%= topLink.redirectId %>"><%= topLink.redirectId %></p>
+        </div>
+        <% } %>
+
+        <h5 class="fw-bold mb-3">All Links Performance</h5>
+        <%- include('partials/url-table') %>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+  </body>
+</html>

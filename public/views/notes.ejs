@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>My Notes</h1>
+          <p>Keep track of ideas and reminders for your links.</p>
+        </div>
+
+        <div class="glass-card">
+          <div class="note-item">
+            <p><strong>Tip:</strong> Use descriptive original URLs so you can easily find them in history.</p>
+          </div>
+          <div class="note-item">
+            <p><strong>Analytics:</strong> Check the Analytics page to see which links get the most clicks.</p>
+          </div>
+          <div class="note-item">
+            <p><strong>Export:</strong> Use the Export page to download all your links as a text file.</p>
+          </div>
+          <div class="note-item">
+            <p><strong>Search:</strong> Use the navbar search to quickly filter links by URL or short ID.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg site-navbar">
+  <div class="container-fluid container-app">
+    <a class="navbar-brand" href="<%= locals.user ? '/' : '/login' %>">
+      <span class="brand-icon">🔗</span>
+      LinkSnap
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <% if (locals.user) { %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'home' ? 'active' : '' %>" href="/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'history' ? 'active' : '' %>" href="/history">History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'analytics' ? 'active' : '' %>" href="/see-more">Analytics</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tools
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/create-file">Export URLs</a></li>
+            <li><a class="dropdown-item" href="/save-urls">Saved Links</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <form action="/clear-history" method="POST" class="d-inline" onsubmit="return confirm('Clear all your URL history?')">
+                <button type="submit" class="dropdown-item text-danger">Clear History</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/setting">Settings</a></li>
+            <li><a class="dropdown-item" href="/account">Profile</a></li>
+            <li><a class="dropdown-item" href="/notes">Notes</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="/help">Help</a></li>
+            <li><a class="dropdown-item" href="/faq">FAQ</a></li>
+          </ul>
+        </li>
+        <% if (locals.user.role === 'ADMIN') { %>
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'admin' ? 'active' : '' %>" href="/admin/urls">Admin</a>
+        </li>
+        <% } %>
+      </ul>
+
+      <form class="d-flex search-form-nav me-lg-2 mb-2 mb-lg-0" role="search" action="/history" method="GET">
+        <input
+          class="form-control"
+          type="search"
+          name="q"
+          placeholder="Search links..."
+          aria-label="Search"
+          value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+        />
+      </form>
+
+      <form action="/logout" method="GET">
+        <button type="submit" class="btn btn-nav-logout">Logout</button>
+      </form>
+      <% } else { %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/help">Help</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/faq">FAQ</a>
+        </li>
+      </ul>
+      <div class="d-flex gap-2 ms-lg-auto">
+        <a href="/login" class="btn btn-nav-auth">Login</a>
+        <a href="/signup" class="btn btn-nav-logout" style="border-color: rgba(255,255,255,0.4);">Sign Up</a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</nav>

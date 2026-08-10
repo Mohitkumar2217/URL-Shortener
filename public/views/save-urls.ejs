@@ -10,13 +10,9 @@
 
       <div class="container-app">
         <div class="page-header">
-          <h1>Link History</h1>
-          <p>View and manage all your shortened URLs in one place.</p>
+          <h1>Saved Links</h1>
+          <p>All your active shortened URLs in one view.</p>
         </div>
-
-        <% if (locals.searchQuery) { %>
-        <p class="text-muted mb-3">Showing results for "<strong><%= searchQuery %></strong>"</p>
-        <% } %>
 
         <%- include('partials/url-table') %>
       </div>

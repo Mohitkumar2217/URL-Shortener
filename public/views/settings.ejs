@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>Settings</h1>
+          <p>Customize your LinkSnap experience.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="glass-card mb-4">
+              <h5 class="fw-bold mb-3">General</h5>
+              <div class="mb-3">
+                <label class="form-label">Default Link Expiry</label>
+                <select class="form-select" disabled>
+                  <option>Never (default)</option>
+                  <option>7 days</option>
+                  <option>30 days</option>
+                </select>
+                <small class="text-muted">Link expiry coming in a future update.</small>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email Notifications</label>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="emailNotif" checked disabled />
+                  <label class="form-check-label" for="emailNotif">Notify on link milestones</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h5 class="fw-bold mb-3 text-danger">Danger Zone</h5>
+              <p class="text-muted small">Permanently delete all your shortened URLs.</p>
+              <form action="/clear-history" method="POST" onsubmit="return confirm('This will delete ALL your links. Continue?')">
+                <button type="submit" class="btn btn-outline-custom text-danger border-danger">Clear All History</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="sidebar-card">
+              <h5>Account Info</h5>
+              <p class="small mb-1"><strong>Email:</strong> <%= user.email %></p>
+              <p class="small mb-1"><strong>Role:</strong> <%= user.role %></p>
+              <a href="/account" class="sidebar-link mt-2">Edit Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+  </body>
+</html>

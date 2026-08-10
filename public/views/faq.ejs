@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <div class="page-wrapper">
+      <%- include('partials/breadcrumb') %>
+
+      <div class="container-app">
+        <div class="page-header">
+          <h1>Frequently Asked Questions</h1>
+          <p>Quick answers to common questions about LinkSnap.</p>
+        </div>
+
+        <div class="glass-card">
+          <div class="faq-item">
+            <div class="faq-question">How do I shorten a URL? <span>+</span></div>
+            <div class="faq-answer">Log in, go to the Dashboard, paste your long URL, and click "Shorten URL". Your short link will appear instantly with a copy button.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Are my links private? <span>+</span></div>
+            <div class="faq-answer">Yes. Only you can see your link history when logged in. Each link is tied to your account.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How do I track clicks? <span>+</span></div>
+            <div class="faq-answer">Every time someone visits your short link, a click is recorded. View click counts in History or visit the Analytics page for an overview.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I delete my links? <span>+</span></div>
+            <div class="faq-answer">Yes. Use "Clear History" from the Tools menu in the navbar, or go to Settings and use the Danger Zone option.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What URL formats are supported? <span>+</span></div>
+            <div class="faq-answer">Any valid HTTP or HTTPS URL. Make sure to include the full address including https://.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+  </body>
+</html>

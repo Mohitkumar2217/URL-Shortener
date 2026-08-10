@@ -1,40 +1,44 @@
-const express = require("express");
 const User = require("../models/user");
-const { isAuthenticated } = require("../middlewares/auth");
 
 async function Handleaccount(req, res) {
   try {
-    // fetch user from DB
     const userDoc = await User.findById(req.user._id);
+    if (!userDoc) return res.redirect("/");
 
-    if (!userDoc) {
-      return res.redirect("/"); // fallback if user not found
-    }
-
-    // Prepare user data for EJS
     const user = {
-      fullName: userDoc.fullName || "",
+      name: userDoc.name || "",
       email: userDoc.email || "",
-      phone: userDoc.phone || "",
-      linkedin: userDoc.linkedin || "",
-      github: userDoc.github || "",
-      twitter: userDoc.twitter || "",
-      address: userDoc.address || "",
-      city: userDoc.city || "",
-      country: userDoc.country || "",
-      dob: userDoc.dob || "",
-      bio: userDoc.bio || "",
-      website: userDoc.website || "",
+      role: userDoc.role || "NORMAL",
+      createdAt: userDoc.createdAt,
     };
 
-    // Pass user object to EJS
-    res.render("account", { user });
+    res.render("account", {
+      user,
+      currentPage: 'account',
+      pageTitle: 'Profile',
+      breadcrumbs: [
+        { label: 'Dashboard', href: '/' },
+        { label: 'Profile', active: true },
+      ],
+    });
   } catch (err) {
     console.error(err);
     res.redirect("/");
   }
 }
 
+async function HandleAccountUpdate(req, res) {
+  try {
+    const { name, email } = req.body;
+    await User.findByIdAndUpdate(req.user._id, { name, email });
+    return res.redirect("/account");
+  } catch (err) {
+    console.error(err);
+    return res.redirect("/account");
+  }
+}
+
 module.exports = {
   Handleaccount,
+  HandleAccountUpdate,
 };
