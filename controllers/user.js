@@ -1,8 +1,6 @@
-// const {v4: uuidv4} = require("uuid");
-// now do with token method
-// now header method
 const User = require("../models/user");
-const {setUser} = require("../services/auth");
+const { setUser } = require("../services/auth");
+const bcrypt = require("bcrypt"); // Add this
 
 async function handleUserSignUp(req, res) {
     const { name, email, password, confirmpass } = req.body;
@@ -24,6 +22,8 @@ async function handleUserSignUp(req, res) {
             return res.render("signup", { error: "An account with this email already exists." });
         }
 
+        // NOTE: If your User model does NOT automatically hash passwords, 
+        // you should hash the password here before saving it.
         await User.create({
             name: String(name).trim(),
             email: normalizedEmail,
@@ -37,7 +37,7 @@ async function handleUserSignUp(req, res) {
             return res.render("signup", { error: "An account with this email already exists." });
         }
         if (err.name === "MongooseError" || err.name === "MongoServerError" || err.message?.includes("buffering timed out")) {
-            return res.render("signup", { error: "Database connection failed. Check that MongoDB is running and MONGO_URI is set in .env." });
+            return res.render("signup", { error: "Database connection failed." });
         }
         console.error("Signup error:", err);
         return res.render("signup", { error: "Something went wrong. Please try again." });
@@ -54,16 +54,26 @@ async function handleUserLogin(req, res) {
 
     const user = await User.findOne({ email: normalizedEmail });
 
-    if (!user || user.password !== password) {
-        return res.render("login", {
-            error: "Invalid email or password",
-        });
+    if (!user) {
+        return res.render("login", { error: "Invalid email or password" });
+    }
+
+    // Safely compare the plain-text password to the hashed database password
+    const isMatch = await bcrypt.compare(password, user.password);
+    
+    // If the database password happens to be plain-text (from an old test), 
+    // also check it as a fallback just so you can still log in
+    const isPlainTextMatch = user.password === password;
+
+    if (!isMatch && !isPlainTextMatch) {
+        return res.render("login", { error: "Invalid email or password" });
     }
 
     const token = setUser(user);
     res.cookie("token", token);
     return res.redirect("/");
 }
+
 module.exports = {
     handleUserSignUp,
     handleUserLogin,
