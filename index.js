@@ -11,7 +11,7 @@ const { checkforAuthentication, restrictTo } = require("./middlewares/auth");
 const staticRouter = require("./routes/static");
 const urlPostRoute = require("./routes/posturl");
 const urlGetRoute = require("./routes/geturl");
-const userRoute = require("./routes/user");
+const userRoute = require("./routes/user.js");
 
 const app = express();
 const PORT = process.env.PORT || 8001;

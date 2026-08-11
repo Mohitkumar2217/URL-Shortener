@@ -22,18 +22,16 @@ async function handleUserSignUp(req, res) {
             return res.render("signup", { error: "An account with this email already exists." });
         }
 
-        // NOTE: If your User model does NOT automatically hash passwords, 
-        // you should hash the password here before saving it.
+        const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({
             name: String(name).trim(),
             email: normalizedEmail,
-            password,
-            confirmpass,
+            password: hashedPassword,
         });
 
         return res.redirect("/login");
     } catch (err) {
-        if (err.code === 11000) {
+        if (err.code === 11000) { 
             return res.render("signup", { error: "An account with this email already exists." });
         }
         if (err.name === "MongooseError" || err.name === "MongoServerError" || err.message?.includes("buffering timed out")) {
