@@ -38,6 +38,12 @@ app.use("/url", restrictTo(['NORMAL', "ADMIN"]), urlGetRoute);
 app.use("/", userRoute);
 app.use("/", staticRouter);
 
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        message: "ok"
+    });
+})
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 })
